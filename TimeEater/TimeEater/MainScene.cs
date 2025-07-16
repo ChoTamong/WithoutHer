@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
 
 namespace TimeEater
 {
@@ -13,56 +14,4 @@ namespace TimeEater
             game.Run();
         }
     }
-
-    public class Player
-    {
-        public void PlayerStatus()
-        {
-            Console.Clear();
-        }
-    }
-    public class Inventory
-    {
-        public void ShowInventory()
-        {
-            Console.Clear();
-        }
-        public void EquipItem()
-        {
-            Console.Clear();
-        }
-    }
-    public class Shop
-    { 
-        public void ShowShop()
-        {
-            Console.Clear();
-        }
-        public void BuyItem()
-        {
-            Console.Clear();
-        }
-    }
-    public class Battle
-    {
-        public void EnterDungeon()
-        { }
-        public void EnterBattle()
-        { }
-        public void PlayerTurn()
-        { }
-        public void EnemyTurn()
-        { }
-    }
-
-    //테이터 클래스:
-    public class Item
-    { }
-    public class Monster
-    { }
-    public class PlayerInfo 
-    { }
-    public class GameManager
-    { }
-
 }
