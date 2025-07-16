@@ -17,6 +17,8 @@
             }
         }
 
+
+
         public void EnterNameAndJob()
         {
             Console.Clear();
@@ -24,7 +26,7 @@
             Console.Write("이름을 입력해주세요.\n>>> ");
 
             string inputName = Utility.readName();
-            // 이름 입력 후 플레이어 객체 이름에 저장 (메소드 불러오기)
+            player.SetName(inputName); // 이름 설정
 
             Console.Clear();
             Console.WriteLine("[직업 선택]\n");
@@ -35,8 +37,9 @@
             Console.Write("\n원하는 직업을 입력해주세요.\n>>> ");
 
             int inputJob = Utility.readNum(1, 4);
-            // 직업 선택 후 플레이어 객체 이름에 저장 (메소드 불러오기) 
+            player.SetJob(inputJob); // 직업 설정
         }
+
         public void ShowMenu()
         {
             Console.Clear();
