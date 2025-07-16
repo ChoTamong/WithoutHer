@@ -2,14 +2,18 @@
 {
     public class Inventory
     {
-        public static List<int> BoughtItemToInventory = new List<int>();
-        public static List<int> EquippedItem = new List<int>();
+        public static List<Item> BoughtItemToInventory = new List<Item>();
+        public static List<Item> EquippedItem = new List<Item>();
         public void ShowInventory()
         {
             Console.Clear();
             Console.WriteLine("[인벤토리]\n");
             Console.WriteLine("[아이템 목록]\n");
-            // 여기에 아이템 목록을 출력하는 로직을 추가할 수 있습니다.
+            foreach (var getIem in BoughtItemToInventory)
+            {
+                string displayEquipped = EquippedItem.Contains(getIem) ? "[E]" : "";
+                Console.WriteLine($"- {displayEquipped} {getIem.Name} | {(getIem.Type == 0 ? "공격력" : "방어력")} + {getIem.Power} | {getIem.Description} ");
+            }
             Console.WriteLine("\n1. 장착 관리");
             Console.WriteLine("0. 나가기");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
@@ -29,6 +33,36 @@
         {
             Console.Clear();
             Console.WriteLine("[장착관리]");
+            Console.WriteLine("[아이템 목록]\n");
+            foreach (var getIem in BoughtItemToInventory)
+            {
+                int selectedIndex = BoughtItemToInventory.IndexOf(getIem) + 1;
+                string displayEquipped = EquippedItem.Contains(getIem) ? "[E]" : "";
+                Console.WriteLine($"- {selectedIndex} {displayEquipped} {getIem.Name} | {(getIem.Type == 0 ? "공격력" : "방어력")} + {getIem.Power} | {getIem.Description} ");
+            }
+            Console.WriteLine("0. 나가기");
+            Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
+
+            int inputNum = Utility.readNum(0, BoughtItemToInventory.Count);
+            switch (inputNum)
+            {
+                case 0:
+                    return;
+                default:
+                    int targetItem = inputNum - 1;
+                    var selectedItem = BoughtItemToInventory[targetItem];
+                    bool isEquipped = EquippedItem.Contains(selectedItem);
+                    if (isEquipped)
+                    {
+                        EquippedItem.Remove(selectedItem);
+                    }
+                    else
+                    {
+                        EquippedItem.Add(selectedItem);
+                    }
+                    EquipItem();
+                    break;
+            }
         }
     }
 }
