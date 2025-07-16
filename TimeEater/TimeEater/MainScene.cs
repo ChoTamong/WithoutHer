@@ -14,28 +14,6 @@ namespace TimeEater
         }
     }
 
-    // 기본 씬 클래스:
-    public class MainMenu
-    {
-        public void Run()
-        {
-            EnterNameAndJob();
-            while (true)
-            {
-                ShowMenu();
-            }
-        }
-
-        public void EnterNameAndJob()
-        {
-            Console.Clear();
-        }
-        public void ShowMenu()
-        {
-            Console.Clear();
-        }
-    }
-
     public class Player
     {
         public void PlayerStatus()
