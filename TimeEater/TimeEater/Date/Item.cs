@@ -3,21 +3,21 @@
     //테이터 클래스:
     public class Item
     {
-        // Name, Type, Power, Price, Description
+        // Name, Type, Power, Price, Description 기본 요소
 
-        //public string Name;
-        //public string Description;
-        //public int Type;
-        //public int Power;
-        //public int Price;
+        public string Name;
+        public string Description;
+        public int Type;
+        public int Power;
+        public int Price;
 
-        //public Item(string name, string description, int type, int power, int price)
-        //{
-        //    Name = name;
-        //    Description = description;
-        //    Type = type; // 0: 무기, 1: 방어구 2: 회복 아이템
-        //    Power = power; // 공격력, 방어력 또는 회복력
-        //    Price = price; // 가격
-        //}
+        public Item(string name, string description, int type, int power, int price)
+        {
+            Name = name; // 아이템 이름
+            Description = description; // 아이템 설명
+            Type = type; // 0: 무기, 1: 방어구
+            Power = power; // 공격력, 방어력
+            Price = price; // 가격
+        }
     }
 }
