@@ -9,6 +9,12 @@ namespace TimeEater
         Attack
     }
 
+    public enum PlayerStatusDisplayMode
+    {
+        Normal,
+
+    }
+
     public class Battle
     {
         public int actNumber; // 행동번호
@@ -20,7 +26,7 @@ namespace TimeEater
 
         public DataManager dataManager;
         //public Player player; 나중에 이걸로 사용하기 
-        public JSY_Player player = new JSY_Player();
+        public Player player;
 
         public string monsterNumber; // 몬스터 레벨 앞에 붙는 문자(숫자나 빈문자열이 될 수 있음)
 
@@ -38,7 +44,7 @@ namespace TimeEater
 
         public int originHealth;
 
-        public void SetData()
+        public void InitPlayer()
         {
             dataManager = DataManager.Instance;
             player = dataManager.player; 
@@ -55,6 +61,7 @@ namespace TimeEater
             switch (actNumber)
             {
                 case 1:
+                    InitPlayer();
                     EnterBattle();
                     break;
                 case 2:
@@ -175,7 +182,7 @@ namespace TimeEater
             }
         }
 
-        public void AttackMonster(JSY_Player player, Monster targetMonster)
+        public void AttackMonster(Player player, Monster targetMonster)
         {
             reducedAttack = player.attack * (1 - 0.1f); // 공격력의 10%
             attackVariance = 0; // 오차 
@@ -272,7 +279,7 @@ namespace TimeEater
             }
         }
 
-        public void Finish(JSY_Player player, int originalHealth)
+        public void Finish(Player player, int originalHealth)
         {
             Console.WriteLine("Battle!! - Result\n");
 

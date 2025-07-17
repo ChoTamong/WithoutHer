@@ -2,19 +2,29 @@
 {
     public class Player
     {
-        public string Name { get; private set; }
-        public string Job { get; private set; }
+        public string name;
+        public string job;
+        public int level = 1;
+        public int hp = 100;
+        public int attack = 10;
+        public int defence = 5;
+        public int gold = 1500;
 
-        public int Level { get; private set; } = 1;
-        public int Hp { get; private set; } = 100;
-        public int Attack { get; private set; } = 10;
-        public int Defence { get; private set; } = 5;
-        public int Gold { get; private set; } = 1500;
+        public Player(string name, int job)
+        {
+            SetName(name);
+            SetJob(job);
+            //this.level = 1;
+            //this.hp = 100;
+            //this.attack = 10;
+            //this.defence = 5;
+            //this.gold = 1500;
+        }
 
         // 이름 설정
         public void SetName(string name)
         {
-            Name = name;
+            this.name = name;
         }
 
         // 직업 설정
@@ -23,39 +33,43 @@
             switch (jobCode)
             {
                 case 1:
-                    Job = "전사";                    
+                    job = "전사";                    
                     break;
                 case 2:
-                    Job = "마법사";
+                    job = "마법사";
                     break;
                 case 3:
-                    Job = "궁수";
+                    job = "궁수";
                     break;
                 case 4:
-                    Job = "도적";
+                    job = "도적";
                     break;
                 default:
-                    Job = "";
+                    job = "";
                     break;
             }
         }
 
-        // 상태 출력
+        //public int GetTotalAttack() =>
+        //    baseAttack + Inventory.EquippedItem.Where(i => i.Type == 0).Sum(i => i.Power);
+
+        //public int GetTotalDefence() =>
+        //    baseDefence + Inventory.EquippedItem.Where(i => i.Type == 1).Sum(i => i.Power);
+
         public void PlayerStatus()
         {
             Console.Clear();
             Console.WriteLine("=== PLAYER STATUS ===");
-            Console.WriteLine($"이름     : {Name}");
-            Console.WriteLine($"직업     : {Job}");
-            Console.WriteLine($"레벨     : {Level}");
-            Console.WriteLine($"HP       : {Hp}");
-            Console.WriteLine($"공격력   : {Attack}");
-            Console.WriteLine($"방어력   : {Defence}");
-            Console.WriteLine($"Gold     : {Gold}");
+            Console.WriteLine($"이름     : {name}");
+            Console.WriteLine($"직업     : {job}");
+            Console.WriteLine($"레벨     : {level}");
+            Console.WriteLine($"HP       : {hp}");
+            Console.WriteLine($"공격력   : {attack}");
+            Console.WriteLine($"방어력   : {defence}");
+            Console.WriteLine($"Gold     : {gold}");
             Console.WriteLine("======================");
-
-            Console.WriteLine("\n아무 키나 누르면 돌아갑니다...");
-            Console.ReadKey(true);
+            Console.WriteLine("\n아무 키나 누르면 돌아갑니다.");
+            Console.ReadKey();
         }
     }
 }
