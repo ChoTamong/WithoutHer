@@ -3,7 +3,7 @@
     // 기본 씬 클래스:
     public class MainMenu
     {
-        Player player = new Player();
+        Player player;
         Inventory inventory = new Inventory();
         Shop shop = new Shop();
         Battle battle = new Battle();
@@ -26,7 +26,6 @@
             Console.Write("이름을 입력해주세요.\n>>> ");
 
             string inputName = Utility.readName();
-            player.SetName(inputName); // 이름 설정
 
             Console.Clear();
             Console.WriteLine("[직업 선택]\n");
@@ -37,7 +36,13 @@
             Console.Write("\n원하는 직업을 입력해주세요.\n>>> ");
 
             int inputJob = Utility.readNum(1, 4);
-            player.SetJob(inputJob); // 직업 설정
+
+            player = new Player(inputName, inputJob);
+
+            DataManager.Instance.player = player;
+
+            //player.SetName(inputName); // 이름 설정
+            //player.SetJob(inputJob); // 직업 설정
         }
 
         public void ShowMenu()

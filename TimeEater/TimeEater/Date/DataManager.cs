@@ -39,8 +39,10 @@
             new Monster("실라", 5, 4, 50, 10, 15)
         };
 
-        //public Player player;
-        public JSY_Player player;
+        public Player player;
+        //public JSY_Player player;
+
+        // 가져가는 기능 (메서드), 가져갈 것들이 많다면 일부만 가져야 하면 만드는게 좋음. 
     }
 
 }
