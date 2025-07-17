@@ -12,7 +12,7 @@
             foreach (var getIem in BoughtItemToInventory)
             {
                 string displayEquipped = EquippedItem.Contains(getIem) ? "[E]" : "";
-                Console.WriteLine($"- {displayEquipped} {getIem.Name} | {(getIem.Type == 0 ? "공격력" : "방어력")} + {getIem.Power} | {getIem.Description} ");
+                Console.WriteLine($"- {displayEquipped} {getIem.name} | {(getIem.type == 0 ? "공격력" : "방어력")} + {getIem.power} | {getIem.description} ");
             }
             Console.WriteLine("\n1. 장착 관리");
             Console.WriteLine("0. 나가기");
@@ -38,7 +38,7 @@
             {
                 int selectedIndex = BoughtItemToInventory.IndexOf(getIem) + 1;
                 string displayEquipped = EquippedItem.Contains(getIem) ? "[E]" : "";
-                Console.WriteLine($"- {selectedIndex} {displayEquipped} {getIem.Name} | {(getIem.Type == 0 ? "공격력" : "방어력")} + {getIem.Power} | {getIem.Description} ");
+                Console.WriteLine($"- {selectedIndex} {displayEquipped} {getIem.name} | {(getIem.type == 0 ? "공격력" : "방어력")} + {getIem.power} | {getIem.description} ");
             }
             Console.WriteLine("\n0. 나가기");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
@@ -56,7 +56,7 @@
                     if (isEquipped)
                     {
                         EquippedItem.Remove(selectedItem);
-                        if (selectedItem.Type == 0)
+                        if (selectedItem.type == 0)
                         { /*-= selectedItem.Power*/ }
                         else 
                         { /*-= selectedItem.Power*/ }
@@ -64,7 +64,7 @@
                     else
                     {
                         EquippedItem.Add(selectedItem);
-                        if (selectedItem.Type == 0)
+                        if (selectedItem.type == 0)
                         { /*+= selectedItem.Power*/ }
                         else
                         { /*+= selectedItem.Power*/ }

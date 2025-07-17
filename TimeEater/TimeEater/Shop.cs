@@ -23,8 +23,8 @@ namespace TimeEater
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in ShopItems)
             {
-                string displayPrice = Inventory.BoughtItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.Price}G";
-                Console.WriteLine($"- {displayItem.Name} | {(displayItem.Type == 0 ? "공격력" : "방어력")} + {displayItem.Power} | {displayItem.Description} | {displayPrice}");
+                string displayPrice = Inventory.BoughtItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
+                Console.WriteLine($"- {displayItem.name} | {(displayItem.type == 0 ? "공격력" : "방어력")} + {displayItem.power} | {displayItem.description} | {displayPrice}");
             }
             Console.WriteLine("\n1. 아이템 구매");
             Console.WriteLine("0. 나가기");
@@ -51,8 +51,8 @@ namespace TimeEater
             foreach (var displayItem in ShopItems)
             {
                 int selectedIndex = ShopItems.IndexOf(displayItem) + 1;
-                string displayPrice = Inventory.BoughtItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.Price}G";
-                Console.WriteLine($"- {selectedIndex} {displayItem.Name} | {(displayItem.Type == 0 ? "공격력" : "방어력")} + {displayItem.Power} | {displayItem.Description} | {displayPrice}");
+                string displayPrice = Inventory.BoughtItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
+                Console.WriteLine($"- {selectedIndex} {displayItem.name} | {(displayItem.type == 0 ? "공격력" : "방어력")} + {displayItem.power} | {displayItem.description} | {displayPrice}");
             }
             Console.WriteLine("\n0. 나가기");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
@@ -72,10 +72,10 @@ namespace TimeEater
                     else 
                     {
                         
-                        if (price >= boughtItem.Price)
+                        if (price >= boughtItem.price)
                         {
                             Console.WriteLine("아이템을 구매했습니다.");
-                            price -= boughtItem.Price;// 나중에 바꿔야 한다.
+                            price -= boughtItem.price;// 나중에 바꿔야 한다.
                             Inventory.BoughtItemToInventory.Add(boughtItem);
                         }
                         else

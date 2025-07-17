@@ -5,19 +5,19 @@
     {
         // Name, Type, Power, Price, Description 기본 요소
 
-        public string Name;
-        public string Description;
-        public int Type;
-        public int Power;
-        public int Price;
+        public string name;
+        public string description;
+        public int type;
+        public int power;
+        public int price;
 
         public Item(string name, string description, int type, int power, int price)
         {
-            Name = name; // 아이템 이름
-            Description = description; // 아이템 설명
-            Type = type; // 0: 무기, 1: 방어구
-            Power = power; // 공격력, 방어력
-            Price = price; // 가격
+            this.name = name; // 아이템 이름
+            this.description = description; // 아이템 설명
+            this.type = type; // 0: 무기, 1: 방어구
+            this.power = power; // 공격력, 방어력
+            this.price = price; // 가격
         }
     }
 }
