@@ -7,13 +7,14 @@
         {
             get
             {
-                if(_instance == null)
+                if (_instance == null)
                 {
                     _instance = new DataManager();
                 }
                 return _instance;
             }
         }
+
 
         // 데이터 리스트 관리
 
@@ -38,7 +39,8 @@
             new Monster("실라", 5, 4, 50, 10, 15)
         };
 
-        public Player player;
+        //public Player player;
+        public JSY_Player player;
     }
 
 }
