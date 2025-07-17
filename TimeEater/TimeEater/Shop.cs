@@ -5,7 +5,6 @@ namespace TimeEater
 {
     public class Shop
     {
-        int price = 12000;// 나중에 바꿔야 한다.
         public static List<Item> ShopItems = new List<Item>()
         {
             new Item("DIY 블레이드", "칫솔 이었던 것", 0, 15, 1500),
@@ -19,7 +18,7 @@ namespace TimeEater
             Console.Clear();
             Console.WriteLine("[상점]\n");
             Console.WriteLine("[보유골드]");
-            Console.WriteLine($"{price}G\n");// 나중에 바꿔야 한다.
+            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");// 나중에 바꿔야 한다.
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in ShopItems)
             {
@@ -46,7 +45,7 @@ namespace TimeEater
             Console.Clear();
             Console.WriteLine("[아이템 구매]\n");
             Console.WriteLine("[보유골드]");
-            Console.WriteLine($"{price}G\n");// 나중에 바꿔야 한다.
+            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");// 나중에 바꿔야 한다.
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in ShopItems)
             {
@@ -72,10 +71,10 @@ namespace TimeEater
                     else 
                     {
                         
-                        if (price >= boughtItem.price)
+                        if (DataManager.Instance.player.gold >= boughtItem.price)
                         {
                             Console.WriteLine("아이템을 구매했습니다.");
-                            price -= boughtItem.price;// 나중에 바꿔야 한다.
+                            DataManager.Instance.player.gold -= boughtItem.price;// 나중에 바꿔야 한다.
                             Inventory.BoughtItemToInventory.Add(boughtItem);
                         }
                         else

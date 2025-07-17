@@ -57,17 +57,17 @@
                     {
                         EquippedItem.Remove(selectedItem);
                         if (selectedItem.type == 0)
-                        { /*-= selectedItem.Power*/ }
+                        { DataManager.Instance.player.attack -= selectedItem.power; }
                         else 
-                        { /*-= selectedItem.Power*/ }
+                        { DataManager.Instance.player.defence -= selectedItem.power; }
                     }
                     else
                     {
                         EquippedItem.Add(selectedItem);
                         if (selectedItem.type == 0)
-                        { /*+= selectedItem.Power*/ }
+                        { DataManager.Instance.player.attack += selectedItem.power; }
                         else
-                        { /*+= selectedItem.Power*/ }
+                        { DataManager.Instance.player.defence += selectedItem.power; }
                     }
                     EquipItem();
                     break;
