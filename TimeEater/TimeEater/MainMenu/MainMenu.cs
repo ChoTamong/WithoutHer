@@ -62,7 +62,7 @@
             switch (inputNum)
             {
                 case 1:
-                    player.PlayerStatus();
+                    player.PlayerStatus(PlayerStatusDisplayMode.Normal);
                     break;
                 case 2:
                     inventory.ShowInventory();
