@@ -5,15 +5,14 @@
         private static DataManager _instance;
         public static DataManager Instance
         {
-            set
+            get
             {
                 if(_instance == null)
                 {
                     _instance = new DataManager();
                 }
+                return _instance;
             }
-
-            get { return _instance; }
         }
 
         // 데이터 리스트 관리
