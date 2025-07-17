@@ -50,7 +50,12 @@
             }
         }
 
-        // 상태 출력
+        //public int GetTotalAttack() =>
+        //    baseAttack + Inventory.EquippedItem.Where(i => i.Type == 0).Sum(i => i.Power);
+
+        //public int GetTotalDefence() =>
+        //    baseDefence + Inventory.EquippedItem.Where(i => i.Type == 1).Sum(i => i.Power);
+
         public void PlayerStatus()
         {
             Console.Clear();
@@ -63,9 +68,8 @@
             Console.WriteLine($"방어력   : {defence}");
             Console.WriteLine($"Gold     : {gold}");
             Console.WriteLine("======================");
-
-            Console.WriteLine("\n아무 키나 누르면 돌아갑니다...");
-            Console.ReadKey(true);
+            Console.WriteLine("\n아무 키나 누르면 돌아갑니다.");
+            Console.ReadKey();
         }
     }
 }
