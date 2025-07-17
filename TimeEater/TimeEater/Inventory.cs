@@ -40,7 +40,7 @@
                 string displayEquipped = EquippedItem.Contains(getIem) ? "[E]" : "";
                 Console.WriteLine($"- {selectedIndex} {displayEquipped} {getIem.Name} | {(getIem.Type == 0 ? "공격력" : "방어력")} + {getIem.Power} | {getIem.Description} ");
             }
-            Console.WriteLine("0. 나가기");
+            Console.WriteLine("\n0. 나가기");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
 
             int inputNum = Utility.readNum(0, BoughtItemToInventory.Count);
@@ -52,13 +52,22 @@
                     int targetItem = inputNum - 1;
                     var selectedItem = BoughtItemToInventory[targetItem];
                     bool isEquipped = EquippedItem.Contains(selectedItem);
+
                     if (isEquipped)
                     {
                         EquippedItem.Remove(selectedItem);
+                        if (selectedItem.Type == 0)
+                        { /*-= selectedItem.Power*/ }
+                        else 
+                        { /*-= selectedItem.Power*/ }
                     }
                     else
                     {
                         EquippedItem.Add(selectedItem);
+                        if (selectedItem.Type == 0)
+                        { /*+= selectedItem.Power*/ }
+                        else
+                        { /*+= selectedItem.Power*/ }
                     }
                     EquipItem();
                     break;

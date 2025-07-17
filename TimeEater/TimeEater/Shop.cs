@@ -4,7 +4,8 @@ using System.Linq;
 namespace TimeEater
 {
     public class Shop
-    { 
+    {
+        int price = 12000;// 나중에 바꿔야 한다.
         public static List<Item> ShopItems = new List<Item>()
         {
             new Item("DIY 블레이드", "칫솔 이었던 것", 0, 15, 1500),
@@ -18,14 +19,14 @@ namespace TimeEater
             Console.Clear();
             Console.WriteLine("[상점]\n");
             Console.WriteLine("[보유골드]");
-            Console.WriteLine($"{12000}G\n");// 나중에 바꿔야 한다.
+            Console.WriteLine($"{price}G\n");// 나중에 바꿔야 한다.
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in ShopItems)
             {
                 string displayPrice = Inventory.BoughtItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.Price}G";
                 Console.WriteLine($"- {displayItem.Name} | {(displayItem.Type == 0 ? "공격력" : "방어력")} + {displayItem.Power} | {displayItem.Description} | {displayPrice}");
             }
-            Console.WriteLine("\n1. 장착 관리");
+            Console.WriteLine("\n1. 아이템 구매");
             Console.WriteLine("0. 나가기");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
             
@@ -45,7 +46,7 @@ namespace TimeEater
             Console.Clear();
             Console.WriteLine("[아이템 구매]\n");
             Console.WriteLine("[보유골드]");
-            Console.WriteLine($"{12000}G\n");// 나중에 바꿔야 한다.
+            Console.WriteLine($"{price}G\n");// 나중에 바꿔야 한다.
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in ShopItems)
             {
@@ -70,10 +71,9 @@ namespace TimeEater
                     }
                     else 
                     {
-                        if (12000 >= boughtItem.Price)
+                        
+                        if (price >= boughtItem.Price)
                         {
-                            int price = 12000;// 나중에 바꿔야 한다.
-
                             Console.WriteLine("아이템을 구매했습니다.");
                             price -= boughtItem.Price;// 나중에 바꿔야 한다.
                             Inventory.BoughtItemToInventory.Add(boughtItem);
