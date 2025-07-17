@@ -56,9 +56,11 @@
         //public int GetTotalDefence() =>
         //    baseDefence + Inventory.EquippedItem.Where(i => i.Type == 1).Sum(i => i.Power);
 
-        public void PlayerStatus()
+        public void PlayerStatus(PlayerStatusDisplayMode mode)
         {
-            Console.Clear();
+            if(mode == PlayerStatusDisplayMode.Normal)
+                Console.Clear();
+
             Console.WriteLine("=== PLAYER STATUS ===");
             Console.WriteLine($"이름     : {name}");
             Console.WriteLine($"직업     : {job}");
@@ -68,8 +70,12 @@
             Console.WriteLine($"방어력   : {defence}");
             Console.WriteLine($"Gold     : {gold}");
             Console.WriteLine("======================");
-            Console.WriteLine("\n아무 키나 누르면 돌아갑니다.");
-            Console.ReadKey();
+
+            if(mode == PlayerStatusDisplayMode.Normal)
+            {
+                Console.WriteLine("\n아무 키나 누르면 돌아갑니다.");
+                Console.ReadKey();
+            }
         }
     }
 }
