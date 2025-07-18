@@ -94,9 +94,6 @@ namespace TimeEater
             {
                 randomIndex = Utility.returnRandomNum(0, 4); // 0 ~ 4 사이 인덱스 
 
-                // 문제 코드 
-                //randomMonsterList.Add(dataManager.monsterList[randomIndex]); // 랜덤 몬스터 리스트에 랜덤 몬스터 추가
-
                 // 같은 인덱스 값 몬스터를 가져오면 똑같은 몬스터라서 똑같이 피가 깎임. 
                 MonsterData data = dataManager.monsterList[randomIndex]; // 원본 데이터를 가져와서
                 Monster monster = new Monster(data);
@@ -133,8 +130,6 @@ namespace TimeEater
         {
             Console.WriteLine("\n[내정보]");
 
-            // 일단은.. dataManager로 가져오기 
-            //dataManager.player.PrintInfo();
             player.PlayerStatus(PlayerStatusDisplayMode.Info);
 
             if(monsterDisplayMode == MonsterDisplayMode.Attack)
@@ -335,7 +330,6 @@ namespace TimeEater
             Console.WriteLine($"던전에서 몬스터 {monsterCount}마리를 잡았습니다.\n");
 
             Console.WriteLine($"Lv.{player.level} {player.name}");
-            //Console.WriteLine($"HP {originHealth} -> {player.hp}\n");
             Console.WriteLine($"HP {player.hp}");
 
             Console.WriteLine("0. 다음\n");

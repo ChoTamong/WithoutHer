@@ -10,18 +10,6 @@
         public int defense;
         public bool isDead;
 
-        //public Monster(string name, int level, int type, int maxHp, int attack, int defense)
-        //{
-        //    this.name = name;
-        //    this.level = level;
-        //    this.type = type;
-        //    this.maxHp = maxHp;
-        //    this.attack = attack;
-        //    this.defense = defense;
-
-        //    this.isDead = false;
-        //}
-
         public Monster(MonsterData monsterData)
         {
             this.name = monsterData.name;
