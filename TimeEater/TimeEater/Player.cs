@@ -10,8 +10,8 @@
         public int defence = 5;
         public int gold = 5000;
 
-        public int extarAck;
-        public int extarDef;
+        public int extraAck;
+        public int extraDef;
 
         public Player(string name, int job)
         {
@@ -69,8 +69,8 @@
             Console.WriteLine($"직업     : {job}");
             Console.WriteLine($"레벨     : {level}");
             Console.WriteLine($"HP       : {hp}");
-            Console.WriteLine(extarAck == 0 ? $"공격력   : {attack}" : $"공격력   : {attack + extarAck} + ({extarAck})");
-            Console.WriteLine(extarDef == 0 ? $"방어력   : {defence}" : $"방어력   : {defence + extarDef} + ({extarDef})");
+            Console.WriteLine(extraAck == 0 ? $"공격력   : {attack}" : $"공격력   : {attack + extraAck} + ({extraAck})");
+            Console.WriteLine(extraDef == 0 ? $"방어력   : {defence}" : $"방어력   : {defence + extraDef} + ({extraDef})");
             Console.WriteLine($"Gold     : {gold}");
             Console.WriteLine("======================");
 

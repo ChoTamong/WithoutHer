@@ -197,14 +197,14 @@ namespace TimeEater
         public void AttackMonster(Player player, Monster targetMonster)
         {
             // 기존 공격력의 10% 
-            attackVariance = (player.attack + player.extarAck) * 0.1f; 
+            attackVariance = (player.attack + player.extraAck) * 0.1f; 
 
             // 오차가 소수점이면 올림처리
             if (attackVariance % 1 != 0)
                 attackVariance = MathF.Ceiling(attackVariance);
 
-            min = (player.attack + player.extarAck) - (int)attackVariance;
-            max = (player.attack + player.extarAck) + (int)attackVariance;
+            min = (player.attack + player.extraAck) - (int)attackVariance;
+            max = (player.attack + player.extraAck) + (int)attackVariance;
             finalAttack = Utility.returnRandomNum(min, max);
 
             // 몬스터 공격

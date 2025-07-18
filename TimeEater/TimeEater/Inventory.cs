@@ -57,17 +57,17 @@
                     {
                         EquippedItem.Remove(selectedItem);
                         if (selectedItem.type == 0)
-                        { DataManager.Instance.player.extarAck -= selectedItem.power; }
+                        { DataManager.Instance.player.extraAck -= selectedItem.power; }
                         else 
-                        { DataManager.Instance.player.extarDef -= selectedItem.power; }
+                        { DataManager.Instance.player.extraDef -= selectedItem.power; }
                     }
                     else
                     {
                         EquippedItem.Add(selectedItem);
                         if (selectedItem.type == 0)
-                        { DataManager.Instance.player.extarAck += selectedItem.power; }
+                        { DataManager.Instance.player.extraAck += selectedItem.power; }
                         else
-                        { DataManager.Instance.player.extarDef += selectedItem.power; }
+                        { DataManager.Instance.player.extraDef += selectedItem.power; }
                     }
                     EquipItem();
                     break;
