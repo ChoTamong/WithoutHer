@@ -10,7 +10,10 @@
 
         public void Run()
         {
-            StartGame();
+            StartGameSceneOne();
+            StartGameSceneTwo();
+            StartGameSceneThird();
+            StartGameSceneFour();
             EnterNameAndJob();
             while (true)
             {
@@ -18,10 +21,31 @@
             }
         }
 
-        public void StartGame()
+        public void StartGameSceneOne()
         {
             Console.Clear();
             UI.Instance.SceneOne();
+            Console.WriteLine("");
+            Console.ReadKey();
+        }
+        public void StartGameSceneTwo()
+        {
+            Console.Clear();
+            UI.Instance.SceneTwo();
+            Console.WriteLine("");
+            Console.ReadKey();
+        }
+        public void StartGameSceneThird()
+        {
+            Console.Clear();
+            UI.Instance.SceneThird();
+            Console.WriteLine("");
+            Console.ReadKey();
+        }
+        public void StartGameSceneFour()
+        {
+            Console.Clear();
+            UI.Instance.SceneFour();
             Console.WriteLine("");
             Console.ReadKey();
         }
@@ -36,7 +60,7 @@
             string inputName = Utility.readName();
 
             Console.Clear();
-            UI.Instance.FirstLine();
+            UI.Instance.Miorror();
             Console.WriteLine("[나의 모습]\n");
             Console.WriteLine("거울에 비친 내 모습을 바라본다.\n");
             Console.WriteLine("1. 왜소하다");
