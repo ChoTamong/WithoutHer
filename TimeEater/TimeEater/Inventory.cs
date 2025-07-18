@@ -57,17 +57,17 @@
                     {
                         EquippedItem.Remove(selectedItem);
                         if (selectedItem.type == 0)
-                        { DataManager.Instance.player.attack -= selectedItem.power; }
+                        { DataManager.Instance.player.extarAck -= selectedItem.power; }
                         else 
-                        { DataManager.Instance.player.defence -= selectedItem.power; }
+                        { DataManager.Instance.player.extarDef -= selectedItem.power; }
                     }
                     else
                     {
                         EquippedItem.Add(selectedItem);
                         if (selectedItem.type == 0)
-                        { DataManager.Instance.player.attack += selectedItem.power; }
+                        { DataManager.Instance.player.extarAck += selectedItem.power; }
                         else
-                        { DataManager.Instance.player.defence += selectedItem.power; }
+                        { DataManager.Instance.player.extarDef += selectedItem.power; }
                     }
                     EquipItem();
                     break;
