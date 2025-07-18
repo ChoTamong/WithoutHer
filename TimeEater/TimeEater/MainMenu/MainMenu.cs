@@ -71,10 +71,10 @@
                     player.PlayerStatus(PlayerStatusDisplayMode.Normal);
                     break;
                 case 2:
-                    inventory.ShowInventory();
+                    inventory.FirstShowInventory();
                     break;
                 case 3:
-                    shop.ShowShop();
+                    shop.FirstItemShop();
                     break;
                 case 4:
                     battle.EnterDungeon();

@@ -1,4 +1,6 @@
-﻿namespace TimeEater
+﻿using System.Reflection.Metadata;
+
+namespace TimeEater
 {
     public class Inventory
     {
@@ -7,11 +9,85 @@
             new Item("종이 복대", "신문지 뭉치로 만든 복대", 0, 5, 1500),
             new Item("낡은 송곳", "작업실에서 가져온 송곳", 1, 5, 1500)
         };
+        public static List<Item> BoughtRecoverItemToInventory = new List<Item>()
+        {
+            new Item("물", "목마를 때 마시는 물", 2, 10, 500)
+        };
         public static List<Item> EquippedItem = new List<Item>();
-        public void ShowInventory()
+
+        public void FirstShowInventory()
         {
             Console.Clear();
             Console.WriteLine("[인벤토리]\n");
+            Console.WriteLine("1. 장착 아이템");
+            Console.WriteLine("2. 사용 아이템\n");
+            Console.WriteLine("0. 나가기");
+            Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
+            
+            int inputNum = Utility.readNum(0, 2);
+            switch (inputNum)
+            {
+                case 1:
+                    ShowInventory();
+                    break;
+                case 2:
+                    ShowRecoveryItem();
+                    break;
+                case 0:
+                    return;
+            }
+        }
+        public void ShowRecoveryItem()
+        {
+            Console.Clear();
+            Console.WriteLine("[사용 아이템]\n");
+            Console.WriteLine("[보유골드]");
+            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
+            Console.WriteLine("[아이템 목록]\n");
+            foreach (var displayItem in BoughtRecoverItemToInventory)
+            {
+                string displayPrice = BoughtItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
+                Console.WriteLine($"- {displayItem.name} | {displayItem.description} | {displayPrice}");
+            }
+            Console.WriteLine("\n0. 나가기");
+            Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
+            int inputNum = Utility.readNum(0, 1);
+            switch (inputNum)
+            {
+                case 0:
+                    return;
+                default:
+                    break;
+            }
+        }
+        public void UseItem()
+        {
+            Console.Clear();
+            Console.WriteLine("[사용 아이템]\n");
+            Console.WriteLine("[보유골드]");
+            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
+            Console.WriteLine("[아이템 목록]\n");
+            foreach (var displayItem in BoughtRecoverItemToInventory)
+            {
+                string displayPrice = BoughtItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
+                Console.WriteLine($"- {displayItem.name} | {displayItem.description} | {displayPrice}");
+            }
+            Console.WriteLine("\n0. 나가기");
+            Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
+            int inputNum = Utility.readNum(0, 1);
+            switch (inputNum)
+            {
+                case 0:
+                    return;
+                default:
+                    break;
+            }
+        }
+
+        public void ShowInventory()
+        {
+            Console.Clear();
+            Console.WriteLine("[장착 아이템]\n");
             Console.WriteLine("[아이템 목록]\n");
             foreach (var getIem in BoughtItemToInventory)
             {
