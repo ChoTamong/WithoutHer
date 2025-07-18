@@ -7,10 +7,10 @@ namespace TimeEater
     {
         public static List<Item> ShopItems = new List<Item>()
         {
-            new Item("DIY 블레이드", "칫솔 이었던 것", 0, 15, 1500),
-            new Item("잡지 뭉치", "칼은 맞을 수 있을지도?", 1, 5, 3500),
+            new Item("DIY 블레이드", "칫솔 이었던 것", 0, 8, 1500),
+            new Item("잡지 뭉치", "칼은 맞을 수 있을지도?", 1, 5, 2000),
             new Item("총", "교도관 몰래 훔쳐 온 총.", 0, 99, 10000),
-            new Item("몽둥이", "교도관이 사용하는 몽둥이.", 0, 20, 2000)
+            new Item("몽둥이", "교도관이 버린 몽둥이.", 0, 20, 3500)
         };
 
         public void ShowShop()

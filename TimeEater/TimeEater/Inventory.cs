@@ -2,7 +2,11 @@
 {
     public class Inventory
     {
-        public static List<Item> BoughtItemToInventory = new List<Item>();
+        public static List<Item> BoughtItemToInventory = new List<Item>() 
+        {
+            new Item("종이 복대", "신문지 뭉치로 만든 복대", 0, 5, 1500),
+            new Item("낡은 송곳", "작업실에서 가져온 송곳", 1, 5, 1500)
+        };
         public static List<Item> EquippedItem = new List<Item>();
         public void ShowInventory()
         {
