@@ -15,7 +15,7 @@ namespace TimeEater
         };
 
         public static List<Item> EquippedItem = new List<Item>();
-        public static List<Item> UseAndDeletItem = new List<Item>();
+        //public static List<Item> UseAndDeletItem = new List<Item>();
 
         public void FirstShowInventory()
         {
@@ -86,23 +86,15 @@ namespace TimeEater
                 default:
                     int targetItem = inputNum - 1;
                     var selectedItem = BoughtRecoverItemToInventory[targetItem];
-                    bool isEquipped = UseAndDeletItem.Contains(selectedItem);
+                    bool isEquipped = BoughtRecoverItemToInventory.Contains(selectedItem);
 
                     if (isEquipped)
                     {
-                        EquippedItem.Remove(selectedItem);
+                        BoughtRecoverItemToInventory.Remove(selectedItem);
                         if (selectedItem.type == 2)
-                        { DataManager.Instance.player.extarHp -= selectedItem.power; }
+                        { DataManager.Instance.player.nowHp += selectedItem.power; }
                         else
-                        { DataManager.Instance.player.extarMp -= selectedItem.power; }
-                    }
-                    else
-                    {
-                        EquippedItem.Add(selectedItem);
-                        if (selectedItem.type == 2)
-                        { DataManager.Instance.player.extarHp += selectedItem.power; }
-                        else
-                        { DataManager.Instance.player.extarMp += selectedItem.power; }
+                        { DataManager.Instance.player.nowMp += selectedItem.power; }
                     }
                     UseItem();
                     break;

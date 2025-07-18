@@ -7,14 +7,14 @@
         public int level = 1;
         public int hp;
         public int mp;
+        public int nowHp;
+        public int nowMp;
         public int attack;
         public int defence;
         public int gold = 5000;
 
         public int extarAck;
         public int extarDef;
-        public int extarHp;
-        public int extarMp;
 
         private Job jobObject; // 새로 추가된 필드
 
@@ -55,6 +55,8 @@
                 attack = jobObject.BaseAttack;
                 defence = jobObject.BaseDefence;
                 mp = jobObject.BaseMP;
+                nowHp = jobObject.NowHP;
+                nowMp = jobObject.NowMP;
             }
         }
 
@@ -72,8 +74,8 @@
             Console.WriteLine($"이름     : {name}");
             Console.WriteLine($"직업     : {job}");
             Console.WriteLine($"레벨     : {level}");
-            Console.WriteLine(extarHp == 0 ? $"HP       : {hp}/{hp}" : $"HP       : {hp + extarHp}/{hp}");
-            Console.WriteLine(extarMp == 0 ? $"MP       : {mp}/{mp}" : $"MP       : {mp + extarMp}/{mp}");
+            Console.WriteLine($"HP       : {nowHp}/{hp}");
+            Console.WriteLine($"MP       : {nowMp}/{mp}");
             Console.WriteLine(extarAck == 0 ? $"공격력   : {attack}" : $"공격력   : {attack + extarAck} + ({extarAck})");
             Console.WriteLine(extarDef == 0 ? $"방어력   : {defence}" : $"방어력   : {defence + extarDef} + ({extarDef})");
             Console.WriteLine($"Gold     : {gold}");

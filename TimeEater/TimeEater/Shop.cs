@@ -56,7 +56,7 @@ namespace TimeEater
             foreach (var displayItem in RecoveryItem)
             {
                 string displayPrice = Inventory.BoughtRecoverItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
-                Console.WriteLine($"- {displayItem.name} | {displayItem.description} | {displayPrice}");
+                Console.WriteLine($"- {displayItem.name} | {(displayItem.type == 2 ? "HP" : "MP")} + {displayItem.power} | {displayItem.description} | {displayPrice}");
             }
             Console.WriteLine("\n1. 아이템 구매");
             Console.WriteLine("0. 나가기");
@@ -85,7 +85,7 @@ namespace TimeEater
             {
                 int selectedIndex = RecoveryItem.IndexOf(displayItem) + 1;
                 string displayPrice = Inventory.BoughtRecoverItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
-                Console.WriteLine($"- {selectedIndex} {displayItem.name} | {displayItem.description} | {displayPrice}");
+                Console.WriteLine($"- {selectedIndex} {displayItem.name} | {(displayItem.type == 2 ? "HP" : "MP")} + {displayItem.power} | {displayItem.description} | {displayPrice}");
             }
             Console.WriteLine("\n0. 나가기");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
