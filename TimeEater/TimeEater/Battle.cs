@@ -43,14 +43,14 @@ namespace TimeEater
         public int originHealth;
 
         // UI
-        public JSY_UI ui;
+        public UI ui;
 
         public void InitPlayer()
         {
             dataManager = DataManager.Instance;
             player = dataManager.player;
 
-            ui = JSY_UI.Instance;
+            ui = UI.Instance;
         }
 
         public void EnterDungeon()
@@ -77,8 +77,10 @@ namespace TimeEater
         {
             Console.Clear();
 
+            UI.Instance.Art1();
+
             DrawPlayer(); // 플레이어 아트 + 대사 
-            
+
             GenerateRandomMonsters(); // 몬스터 랜덤 생성 
 
             PrintRandomMonsters(monsterDisplayMode); // 랜덤 몬스터 출력
