@@ -60,9 +60,9 @@
             }
         }
 
-        public void UseSkill()
+        public void UseSkill(Monster target) // 메소드에 몬스터 타겟 추가
         {
-            jobObject?.UseSkill(); // 직업별 스킬 실행
+            jobObject?.UseSkill(this, target); // 직업별 스킬 실행 
         }
 
         public void PlayerStatus(PlayerStatusDisplayMode mode)

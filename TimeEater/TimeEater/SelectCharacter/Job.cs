@@ -17,7 +17,7 @@ namespace TimeEater
         public abstract int BaseDefence { get; }
 
         // 나중에 확장을 위한 메서드
-        public virtual void UseSkill()
+        public virtual void UseSkill(Player player, Monster target) // Player player, Monster target 매개변수 추가.
         {
             Console.WriteLine($"{Name}은(는) 아무 스킬도 없습니다.");
         }
