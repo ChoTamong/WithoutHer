@@ -11,7 +11,7 @@ namespace TimeEater
         };
         public static List<Item> BoughtRecoverItemToInventory = new List<Item>()
         {
-            new Item("물", "목마를 때 마시는 물", 2, 10, 500)
+            new Item("물", "목마를 때 마시는 물", 2, 5, 500)
         };
 
         public static List<Item> EquippedItem = new List<Item>();
@@ -92,9 +92,21 @@ namespace TimeEater
                     {
                         BoughtRecoverItemToInventory.Remove(selectedItem);
                         if (selectedItem.type == 2)
-                        { DataManager.Instance.player.nowHp += selectedItem.power; }
+                        { 
+                            DataManager.Instance.player.nowHp += selectedItem.power;
+                            if (DataManager.Instance.player.nowHp > DataManager.Instance.player.hp)
+                            {
+                                DataManager.Instance.player.nowHp = DataManager.Instance.player.hp;
+                            }
+                        }
                         else
-                        { DataManager.Instance.player.nowMp += selectedItem.power; }
+                        { 
+                            DataManager.Instance.player.nowMp += selectedItem.power;
+                            if (DataManager.Instance.player.nowMp > DataManager.Instance.player.mp)
+                            {
+                                DataManager.Instance.player.nowMp = DataManager.Instance.player.mp;
+                            }
+                        }
                     }
                     UseItem();
                     break;
