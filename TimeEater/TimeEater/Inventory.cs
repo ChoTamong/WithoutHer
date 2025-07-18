@@ -13,7 +13,9 @@ namespace TimeEater
         {
             new Item("물", "목마를 때 마시는 물", 2, 10, 500)
         };
+
         public static List<Item> EquippedItem = new List<Item>();
+        public static List<Item> UseAndDeletItem = new List<Item>();
 
         public void FirstShowInventory()
         {
@@ -25,6 +27,7 @@ namespace TimeEater
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
             
             int inputNum = Utility.readNum(0, 2);
+
             switch (inputNum)
             {
                 case 1:
@@ -37,26 +40,27 @@ namespace TimeEater
                     return;
             }
         }
+
         public void ShowRecoveryItem()
         {
             Console.Clear();
             Console.WriteLine("[사용 아이템]\n");
-            Console.WriteLine("[보유골드]");
-            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in BoughtRecoverItemToInventory)
             {
-                string displayPrice = BoughtItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
-                Console.WriteLine($"- {displayItem.name} | {displayItem.description} | {displayPrice}");
+                Console.WriteLine($"- {displayItem.name} | {(displayItem.type == 2 ? "HP" : "MP")} + {displayItem.power} | {displayItem.description} ");
             }
-            Console.WriteLine("\n0. 나가기");
+            Console.WriteLine("\n1. 아이템 사용");
+            Console.WriteLine("0. 나가기");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
             int inputNum = Utility.readNum(0, 1);
             switch (inputNum)
             {
                 case 0:
-                    return;
-                default:
+                    FirstShowInventory();
+                    break;
+                case 1:
+                    UseItem();
                     break;
             }
         }
@@ -64,22 +68,43 @@ namespace TimeEater
         {
             Console.Clear();
             Console.WriteLine("[사용 아이템]\n");
-            Console.WriteLine("[보유골드]");
-            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in BoughtRecoverItemToInventory)
             {
-                string displayPrice = BoughtItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
-                Console.WriteLine($"- {displayItem.name} | {displayItem.description} | {displayPrice}");
+                int selectedIndex = BoughtRecoverItemToInventory.IndexOf(displayItem) + 1;
+                Console.WriteLine($"- {selectedIndex} {displayItem.name} | {(displayItem.type == 2 ? "HP" : "MP")} + {displayItem.power} | {displayItem.description} ");
             }
             Console.WriteLine("\n0. 나가기");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
-            int inputNum = Utility.readNum(0, 1);
+
+            int inputNum = Utility.readNum(0, BoughtRecoverItemToInventory.Count);
+            
             switch (inputNum)
             {
                 case 0:
                     return;
                 default:
+                    int targetItem = inputNum - 1;
+                    var selectedItem = BoughtRecoverItemToInventory[targetItem];
+                    bool isEquipped = UseAndDeletItem.Contains(selectedItem);
+
+                    if (isEquipped)
+                    {
+                        EquippedItem.Remove(selectedItem);
+                        if (selectedItem.type == 2)
+                        { DataManager.Instance.player.extarHp -= selectedItem.power; }
+                        else
+                        { DataManager.Instance.player.extarMp -= selectedItem.power; }
+                    }
+                    else
+                    {
+                        EquippedItem.Add(selectedItem);
+                        if (selectedItem.type == 2)
+                        { DataManager.Instance.player.extarHp += selectedItem.power; }
+                        else
+                        { DataManager.Instance.player.extarMp += selectedItem.power; }
+                    }
+                    UseItem();
                     break;
             }
         }
@@ -105,7 +130,8 @@ namespace TimeEater
                     EquipItem();
                     break;
                 case 0:
-                    return;
+                    FirstShowInventory();
+                    break;
             }
 
         }
