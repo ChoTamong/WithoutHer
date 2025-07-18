@@ -15,7 +15,7 @@
         {
             this.name = name; // 아이템 이름
             this.description = description; // 아이템 설명
-            this.type = type; // 0: 무기, 1: 방어구
+            this.type = type; // 0: 무기, 1: 방어구 2: 물약
             this.power = power; // 공격력, 방어력
             this.price = price; // 가격
         }
