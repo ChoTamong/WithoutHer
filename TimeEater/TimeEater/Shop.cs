@@ -45,7 +45,7 @@ namespace TimeEater
             Console.Clear();
             Console.WriteLine("[아이템 구매]\n");
             Console.WriteLine("[보유골드]");
-            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");// 나중에 바꿔야 한다.
+            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in ShopItems)
             {
@@ -74,7 +74,7 @@ namespace TimeEater
                         if (DataManager.Instance.player.gold >= boughtItem.price)
                         {
                             Console.WriteLine("아이템을 구매했습니다.");
-                            DataManager.Instance.player.gold -= boughtItem.price;// 나중에 바꿔야 한다.
+                            DataManager.Instance.player.gold -= boughtItem.price;
                             Inventory.BoughtItemToInventory.Add(boughtItem);
                         }
                         else

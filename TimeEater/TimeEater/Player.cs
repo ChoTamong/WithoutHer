@@ -5,23 +5,21 @@
         public string name;
         public string job;
         public int level = 1;
-        public int hp = 100;
-        public int attack = 10;
-        public int defence = 5;
+        public int hp;
+        public int mp;
+        public int attack;
+        public int defence;
         public int gold = 5000;
 
         public int extarAck;
         public int extarDef;
 
+        private Job jobObject; // 새로 추가된 필드
+
         public Player(string name, int job)
         {
             SetName(name);
             SetJob(job);
-            //this.level = 1;
-            //this.hp = 100;
-            //this.attack = 10;
-            //this.defence = 5;
-            //this.gold = 1500;
         }
 
         // 이름 설정
@@ -36,28 +34,32 @@
             switch (jobCode)
             {
                 case 1:
-                    job = "전사";                    
+                    jobObject = new SlightBuild();
                     break;
                 case 2:
-                    job = "마법사";
+                    jobObject = new Normal();
                     break;
                 case 3:
-                    job = "궁수";
-                    break;
-                case 4:
-                    job = "도적";
+                    jobObject = new MuscleMan();
                     break;
                 default:
-                    job = "";
+                    jobObject = null;
                     break;
+            }
+            if (jobObject != null)
+            {
+                job = jobObject.Name;
+                hp = jobObject.BaseHP;
+                attack = jobObject.BaseAttack;
+                defence = jobObject.BaseDefence;
+                mp = jobObject.BaseMP;
             }
         }
 
-        //public int GetTotalAttack() =>
-        //    baseAttack + Inventory.EquippedItem.Where(i => i.Type == 0).Sum(i => i.Power);
-
-        //public int GetTotalDefence() =>
-        //    baseDefence + Inventory.EquippedItem.Where(i => i.Type == 1).Sum(i => i.Power);
+        public void UseSkill()
+        {
+            jobObject?.UseSkill(); // 직업별 스킬 실행
+        }
 
         public void PlayerStatus(PlayerStatusDisplayMode mode)
         {
@@ -69,6 +71,7 @@
             Console.WriteLine($"직업     : {job}");
             Console.WriteLine($"레벨     : {level}");
             Console.WriteLine($"HP       : {hp}");
+            Console.WriteLine($"MP       : {mp}");
             Console.WriteLine(extarAck == 0 ? $"공격력   : {attack}" : $"공격력   : {attack + extarAck} + ({extarAck})");
             Console.WriteLine(extarDef == 0 ? $"방어력   : {defence}" : $"방어력   : {defence + extarDef} + ({extarDef})");
             Console.WriteLine($"Gold     : {gold}");

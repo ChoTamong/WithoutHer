@@ -10,6 +10,7 @@
 
         public void Run()
         {
+            StartGame();
             EnterNameAndJob();
             while (true)
             {
@@ -17,7 +18,12 @@
             }
         }
 
-
+        public void StartGame()
+        {
+            Console.Clear();
+            Console.WriteLine("[게임 시작]\n");
+            Console.ReadKey();
+        }
 
         public void EnterNameAndJob()
         {
@@ -28,14 +34,14 @@
             string inputName = Utility.readName();
 
             Console.Clear();
-            Console.WriteLine("[직업 선택]\n");
-            Console.WriteLine("1. 전사");
-            Console.WriteLine("2. 마법사");
-            Console.WriteLine("3. 궁수");
-            Console.WriteLine("4. 도적");
-            Console.Write("\n원하는 직업을 입력해주세요.\n>>> ");
+            Console.WriteLine("[나의 모습]\n");
+            Console.WriteLine("거울에 비친 내 모습을 바라본다.\n");
+            Console.WriteLine("1. 왜소하다");
+            Console.WriteLine("2. 평범하다");
+            Console.WriteLine("3. 다부지다");
+            Console.Write("\n선택하기...\n>>> ");
 
-            int inputJob = Utility.readNum(1, 4);
+            int inputJob = Utility.readNum(1, 3);
 
             player = new Player(inputName, inputJob);
 
