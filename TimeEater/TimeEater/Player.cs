@@ -8,7 +8,7 @@
         public int hp = 100;
         public int attack = 10;
         public int defence = 5;
-        public int gold = 1500;
+        public int gold = 5000;
 
         public int extarAck;
         public int extarDef;
