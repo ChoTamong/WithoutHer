@@ -91,7 +91,7 @@ namespace TimeEater
 
         public void DrawPlayer()
         {
-            ui.Test();
+            ui.Art1();
             Console.WriteLine("~~~~~");
             Console.ReadKey();
         }

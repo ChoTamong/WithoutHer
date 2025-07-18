@@ -5,7 +5,7 @@ namespace BrailleArt
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public void Art()
         {
             Console.OutputEncoding = Encoding.UTF8;
 
