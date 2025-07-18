@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using System.Threading;
+using TimeEater.UI;
 
 namespace TimeEater
 {
@@ -42,10 +43,15 @@ namespace TimeEater
 
         public int originHealth;
 
+        // UI
+        public JSY_UI ui;
+
         public void InitPlayer()
         {
             dataManager = DataManager.Instance;
-            player = dataManager.player; 
+            player = dataManager.player;
+
+            ui = JSY_UI.Instance;
         }
 
         public void EnterDungeon()
@@ -85,7 +91,7 @@ namespace TimeEater
 
         public void DrawPlayer()
         {
-            Console.WriteLine("플레이어 그림");
+            ui.Test();
             Console.WriteLine("~~~~~");
             Console.ReadKey();
         }
