@@ -50,6 +50,9 @@ namespace TimeEater
         public int oriCursorXPos;
         public int oriCursorYPos;
 
+        public int playerInfoXPos;
+        public int playerInfoYPos;
+
         public void InitPlayer()
         {
             dataManager = DataManager.Instance;
@@ -88,6 +91,8 @@ namespace TimeEater
 
             GenerateRandomMonsters(); // 몬스터 랜덤 생성 
 
+            playerInfoXPos = Console.CursorLeft;
+            playerInfoYPos = Console.CursorTop;
             PrintPlayerInfo(); // 내정보 출력
 
             PrintRandomMonsters(monsterDisplayMode); // 랜덤 몬스터 출력
@@ -120,6 +125,12 @@ namespace TimeEater
             currentCursorPos = Console.CursorTop;
             //Console.WriteLine("Battle!!\n");
 
+            if(displayMode == MonsterDisplayMode.Attack)
+            {
+                Console.CursorLeft = playerInfoXPos;
+                Console.CursorTop = playerInfoYPos;
+            }
+
             for (int i = 0; i < randomMonsterList.Count; i++)
             {
                 monsterNumber = displayMode == MonsterDisplayMode.Attack ? (i + 1).ToString() : "";
@@ -134,7 +145,11 @@ namespace TimeEater
                 else
                 {
                     //Console.ResetColor();
-                    Console.SetCursorPosition(70, currentCursorPos - 7 + i);
+                    if(displayMode == MonsterDisplayMode.Attack)
+                        Console.SetCursorPosition(70, playerInfoYPos + i);
+                    else
+                        Console.SetCursorPosition(70, currentCursorPos - 7 + i);
+
                     Console.WriteLine($"{monsterNumber} Lv.{randomMonsterList[i].level} {randomMonsterList[i].name} HP {randomMonsterList[i].maxHp}");
                 }
 
@@ -147,6 +162,8 @@ namespace TimeEater
         public void PrintPlayerInfo()
         {
             //player.PlayerStatus(PlayerStatusDisplayMode.Info);
+
+            Console.SetCursorPosition(playerInfoXPos, playerInfoYPos);
             player.PlayerInfo();
 
             if(monsterDisplayMode == MonsterDisplayMode.Attack)
@@ -166,8 +183,8 @@ namespace TimeEater
                 // 공격 
                 case 1: 
                     monsterDisplayMode = MonsterDisplayMode.Attack;
-                    PrintRandomMonsters(monsterDisplayMode);
                     PrintPlayerInfo();
+                    PrintRandomMonsters(monsterDisplayMode);
                     SetTarget();
                     AttackMonster(player, targetMonster);
                     break;
@@ -176,8 +193,8 @@ namespace TimeEater
 
         public void SetTarget()
         {
-            Console.WriteLine("\n대상을 선택해주세요.");
-            Console.Write(">> ");
+            Console.WriteLine("\n대상을 선택해주세요.            ");
+            Console.Write(">>  ");
             targetNumber = Utility.readNum(0, randomMonsterList.Count); // 랜덤 몬스터 수만큼 
 
             // 대상 몬스터들 내에서 선택하면
@@ -193,7 +210,7 @@ namespace TimeEater
                 {
                     // 타겟 몬스터 설정 
                     targetMonster = randomMonsterList[targetNumber - 1];
-                    Console.WriteLine($"타겟 몬스터 : {targetMonster.name}"); // 확인용 
+                    //Console.WriteLine($"타겟 몬스터 : {targetMonster.name}"); // 확인용 
                 }
             }
             else
@@ -216,9 +233,9 @@ namespace TimeEater
 
         public void AttackMonster(Player player, Monster targetMonster)
         {
-            Console.Clear();
-            Console.WriteLine("(배틀씬)");
-            Console.WriteLine("플레이어, 적 그림");
+            //Console.Clear();
+            //Console.WriteLine("(배틀씬)");
+            //Console.WriteLine("플레이어, 적 그림");
 
             // 기존 공격력의 10% 
             attackVariance = (player.attack + player.extarAck) * 0.1f; 
@@ -232,15 +249,17 @@ namespace TimeEater
             finalAttack = Utility.returnRandomNum(min, max);
 
             // 몬스터 공격
-            Console.WriteLine("Battle!!\n");
-            Console.WriteLine($"{player.name} 의 공격!");
+            //Console.WriteLine("Battle!!\n");
+            Console.CursorLeft = playerInfoXPos;
+            Console.CursorTop = playerInfoYPos;
+            Console.WriteLine($"{player.name} 의 공격!                          ");
 
             originHealth = targetMonster.maxHp;
             targetMonster.maxHp -= (int)finalAttack;
 
             Console.WriteLine($"Lv.{targetMonster.level} {targetMonster.name}을(를) 맞췄습니다. [데미지 : {finalAttack}]");
 
-            Console.WriteLine($"Lv.{targetMonster.level} {targetMonster.name}");
+            Console.WriteLine($"Lv.{targetMonster.level} {targetMonster.name}                   ");
 
             if (targetMonster.maxHp <= 0)
             {
@@ -250,7 +269,7 @@ namespace TimeEater
             }
             else
             {
-                Console.WriteLine($"HP {originHealth} -> {targetMonster.maxHp}");
+                Console.WriteLine($"HP {originHealth} -> {targetMonster.maxHp}            ");
             }
 
             // 적 턴으로 넘어가기 전에 적이 모두 죽었으면 
@@ -265,8 +284,8 @@ namespace TimeEater
 
         public void PlayerTurn()
         {
-            Console.WriteLine("0. 다음\n");
-            Console.Write(">> ");
+            Console.WriteLine("\n0. 다음\n\n");
+            Console.Write(">>                   ");
 
             actNumber = Utility.readNum(0, 0);
 
