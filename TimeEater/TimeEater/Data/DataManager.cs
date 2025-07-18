@@ -1,21 +1,7 @@
 ﻿namespace TimeEater
 {
-    public class DataManager
+    public class DataManager : Singleton<DataManager>
     {
-        private static DataManager _instance;
-        public static DataManager Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new DataManager();
-                }
-                return _instance;
-            }
-        }
-
-
         // 데이터 리스트 관리
 
         //public static List<Item> baseItemAttribute = new List<Item>()

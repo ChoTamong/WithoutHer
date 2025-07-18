@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using System.Threading;
+using TimeEater.UI;
 
 namespace TimeEater
 {
@@ -42,16 +43,21 @@ namespace TimeEater
 
         public int originHealth;
 
+        // UI
+        public JSY_UI ui;
+
         public void InitPlayer()
         {
             dataManager = DataManager.Instance;
-            player = dataManager.player; 
+            player = dataManager.player;
+
+            ui = JSY_UI.Instance;
         }
 
         public void EnterDungeon()
         {
             Console.Clear();
-            Console.WriteLine("던전에 입장하시겠습니까?");
+            Console.WriteLine("탈옥하시겠습니까?");
             Console.WriteLine("1. 예");
             Console.WriteLine("2. 아니오");
             actNumber = Utility.readNum(1, 2);
@@ -71,6 +77,8 @@ namespace TimeEater
         public void EnterBattle()
         {
             Console.Clear();
+
+            DrawPlayer(); // 플레이어 아트 + 대사 
             
             GenerateRandomMonsters(); // 몬스터 랜덤 생성 
 
@@ -79,6 +87,13 @@ namespace TimeEater
             PrintPlayerInfo(); // 내정보 출력
 
             SetBattleActNumber(); // 원하는 행동 입력 
+        }
+
+        public void DrawPlayer()
+        {
+            ui.Art1();
+            Console.WriteLine("~~~~~");
+            Console.ReadKey();
         }
 
         public void GenerateRandomMonsters()
@@ -111,11 +126,13 @@ namespace TimeEater
                 if (randomMonsterList[i].isDead)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGray; // 죽은 몬스터 색상을 어둡게 설정 
+                    Console.WriteLine("적 그림");
                     Console.WriteLine($"{monsterNumber}Lv.{randomMonsterList[i].level} {randomMonsterList[i].name} Dead");
                 }
                 else
                 {
                     //Console.ResetColor();
+                    Console.WriteLine("적 그림");
                     Console.WriteLine($"{monsterNumber} Lv.{randomMonsterList[i].level} {randomMonsterList[i].name} HP {randomMonsterList[i].maxHp}");
                 }
 
@@ -125,6 +142,7 @@ namespace TimeEater
 
         public void PrintPlayerInfo()
         {
+            Console.WriteLine("\n플레이어 그림");
             Console.WriteLine("\n[내정보]");
 
             player.PlayerStatus(PlayerStatusDisplayMode.Info);
@@ -196,6 +214,10 @@ namespace TimeEater
 
         public void AttackMonster(Player player, Monster targetMonster)
         {
+            Console.Clear();
+            Console.WriteLine("(배틀씬)");
+            Console.WriteLine("플레이어, 적 그림");
+
             // 기존 공격력의 10% 
             attackVariance = (player.attack + player.extarAck) * 0.1f; 
 
@@ -208,7 +230,6 @@ namespace TimeEater
             finalAttack = Utility.returnRandomNum(min, max);
 
             // 몬스터 공격
-            Console.Clear();
             Console.WriteLine("Battle!!\n");
             Console.WriteLine($"{player.name} 의 공격!");
 
@@ -260,6 +281,8 @@ namespace TimeEater
 
         public void EnemyTurn()
         {
+            Console.WriteLine("(배틀씬)");
+            Console.WriteLine("플레이어, 적 그림");
             Console.WriteLine("Battle!!\n");
 
             // 위에 표시된 몬스터부터 공격
@@ -315,6 +338,7 @@ namespace TimeEater
 
         public void Finish(Player player, int originalHealth)
         {
+            Console.WriteLine("승리 그림");
             Console.WriteLine("Battle!! - Result\n");
 
             Console.WriteLine("Victory\n");
@@ -332,6 +356,7 @@ namespace TimeEater
 
         public void Lose(Player player, int originHealth)
         {
+            Console.WriteLine("패배 그림");
             Console.WriteLine("Battle!! - Result\n");
 
             Console.WriteLine("You Lose\n");

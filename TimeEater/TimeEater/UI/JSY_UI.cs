@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace TimeEater
+namespace TimeEater.UI
 {
-    class UI
+    public class JSY_UI : Singleton<JSY_UI>
     {
-        public void Image()
-        public void Art()
+        public void Art1()
         {
             Console.OutputEncoding = Encoding.UTF8;
 
@@ -203,8 +205,6 @@ namespace TimeEater
             Console.WriteLine(sceneone);
             Console.WriteLine(scenetwo);
             Console.WriteLine(scenethird);
-
         }
     }
 }
-
