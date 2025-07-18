@@ -18,7 +18,7 @@ namespace TimeEater
             Console.Clear();
             Console.WriteLine("[상점]\n");
             Console.WriteLine("[보유골드]");
-            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");// 나중에 바꿔야 한다.
+            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in ShopItems)
             {
