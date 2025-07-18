@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 using System.Threading;
-using TimeEater.UI;
 
 namespace TimeEater
 {

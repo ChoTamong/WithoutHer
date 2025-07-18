@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TimeEater.UI
+namespace TimeEater
 {
     public class JSY_UI : Singleton<JSY_UI>
     {

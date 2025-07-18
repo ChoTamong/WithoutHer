@@ -3,9 +3,8 @@ using System.Text;
 
 namespace TimeEater
 {
-    class UI
+    public class UI
     {
-        public void Image()
         public void Art()
         {
             Console.OutputEncoding = Encoding.UTF8;
