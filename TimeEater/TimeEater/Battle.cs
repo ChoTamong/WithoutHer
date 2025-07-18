@@ -25,7 +25,6 @@ namespace TimeEater
         public int randomIndex; // 랜덤 인덱스 
 
         public DataManager dataManager;
-        //public Player player; 나중에 이걸로 사용하기 
         public Player player;
 
         public string monsterNumber; // 몬스터 레벨 앞에 붙는 문자(숫자나 빈문자열이 될 수 있음)
@@ -36,7 +35,6 @@ namespace TimeEater
         public Monster targetMonster;
 
         // 공격 변수 
-        public float reducedAttack;
         public float attackVariance;
         public int min; // 기존 공격력 - 오차
         public int max; // 기존 공격력 + 오차
@@ -85,7 +83,6 @@ namespace TimeEater
 
         public void GenerateRandomMonsters()
         {
-            // 일단은... dataManager 가져오기
             dataManager = DataManager.Instance;
 
             monsterCount = Utility.returnRandomNum(1, 5); // 1 ~ 4 사이 랜덤 숫자로 몬스터 개수를 설정
@@ -199,20 +196,15 @@ namespace TimeEater
 
         public void AttackMonster(Player player, Monster targetMonster)
         {
-            reducedAttack = player.attack * (1 - 0.1f); // 공격력의 10%
-            attackVariance = 0; // 오차 
+            // 기존 공격력의 10% 
+            attackVariance = (player.attack + player.extarAck) * 0.1f; 
 
-            // 오차가 소수점이면 올림처리1
-            if (reducedAttack % 1 != 0)
-                attackVariance = MathF.Ceiling(reducedAttack);
+            // 오차가 소수점이면 올림처리
+            if (attackVariance % 1 != 0)
+                attackVariance = MathF.Ceiling(attackVariance);
 
-            // 오차가 정수면
-            else
-                attackVariance = reducedAttack;
-
-            // 최종 공격력 = (기존 공격력 - 오차) ~ (기존 공격력 + 오차)
-            min = (int)(player.attack - attackVariance);
-            max = (int)(player.attack + attackVariance + 1);
+            min = (player.attack + player.extarAck) - (int)attackVariance;
+            max = (player.attack + player.extarAck) + (int)attackVariance;
             finalAttack = Utility.returnRandomNum(min, max);
 
             // 몬스터 공격
@@ -231,8 +223,7 @@ namespace TimeEater
             {
                 targetMonster.maxHp = 0;
                 Console.WriteLine($"HP {originHealth} -> Dead");
-                //몬스터가 죽었다면 해당 몬스터에 텍스트는 전부 어두운 색으로 표시합니다.
-                targetMonster.isDead = true; // 죽은 몬스터를 구분. isDead로 어두운 색 구분
+                targetMonster.isDead = true; // isDead로 죽은 몬스터를 구분
             }
             else
             {
@@ -317,6 +308,7 @@ namespace TimeEater
                 if (player.hp < 0) player.hp = 0;
 
                 Lose(player, originHealth);
+                return;
             }
 
         }
