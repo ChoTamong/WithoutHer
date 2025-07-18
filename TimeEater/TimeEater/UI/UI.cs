@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text;
 
-namespace BrailleArt
+namespace TimeEater
 {
-    internal class Program
+    class UI
     {
-        static void Main(string[] args)
+        public void Image()
         {
             Console.OutputEncoding = Encoding.UTF8;
 
