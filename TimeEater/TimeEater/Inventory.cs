@@ -20,10 +20,7 @@ namespace TimeEater
         public void FirstShowInventory()
         {
             Console.Clear();
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("[인벤토리]");
-            UI.Instance.Inventoryline();
+            Console.WriteLine("[인벤토리]\n");
             Console.WriteLine("1. 장착 아이템");
             Console.WriteLine("2. 사용 아이템\n");
             Console.WriteLine("0. 나가기");
@@ -47,10 +44,7 @@ namespace TimeEater
         public void ShowRecoveryItem()
         {
             Console.Clear();
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("[사용 아이템]");
-            UI.Instance.Inventoryline();
+            Console.WriteLine("[사용 아이템]\n");
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in BoughtRecoverItemToInventory)
             {
@@ -73,10 +67,7 @@ namespace TimeEater
         public void UseItem()
         {
             Console.Clear();
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("[사용 아이템]");
-            UI.Instance.Inventoryline();
+            Console.WriteLine("[사용 아이템]\n");
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in BoughtRecoverItemToInventory)
             {
@@ -125,10 +116,7 @@ namespace TimeEater
         public void ShowInventory()
         {
             Console.Clear();
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("[장착 아이템]");
-            UI.Instance.Inventoryline();
+            Console.WriteLine("[장착 아이템]\n");
             Console.WriteLine("[아이템 목록]\n");
             foreach (var getIem in BoughtItemToInventory)
             {
@@ -154,10 +142,7 @@ namespace TimeEater
         public void EquipItem()
         {
             Console.Clear();
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("[장착 아이템]");
-            UI.Instance.Inventoryline();
+            Console.WriteLine("[장착관리]");
             Console.WriteLine("[아이템 목록]\n");
             foreach (var getIem in BoughtItemToInventory)
             {

@@ -22,13 +22,12 @@ namespace TimeEater
         public void FirstItemShop()
         {
             Console.Clear();
-            Console.WriteLine("[밀거래상]:");
-            UI.Instance.shopScene(); // 상인 이미지;
+            Console.WriteLine("[상점]\n");
             Console.WriteLine("어이.. 친구 뭐가 필요하지...?\n");
             Console.WriteLine("1. 장착 아이템");
             Console.WriteLine("2. 회복 아이템\n");
             Console.WriteLine("0. 나가기");
-            Console.Write("\n(원하는 행동을 입력하세요.)\n>>> ");
+            Console.Write("\n원하는 행동을 입력하세요.\n>>> ");
 
             int inputNum = Utility.readNum(0, 2);
 
@@ -46,12 +45,10 @@ namespace TimeEater
                     return;
             }
         }
-        
+
         public void ShowRecoveryItem()
         {
             Console.Clear();
-            Console.WriteLine("[밀거래상]:");
-            UI.Instance.shopScene(); // 상인 이미지;
             Console.WriteLine("[회복 아이템]\n");
             Console.WriteLine("[보유골드]");
             Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
@@ -76,11 +73,10 @@ namespace TimeEater
                     break;
             }
         }
+
         public void BuyRecoveryItem()
         {
             Console.Clear();
-            Console.WriteLine("[밀거래상]:");
-            UI.Instance.shopScene(); // 상인 이미지;
             Console.WriteLine("[회복 아이템 구매]\n");
             Console.WriteLine("[보유골드]");
             Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
@@ -131,8 +127,6 @@ namespace TimeEater
         public void ShowShop()
         {
             Console.Clear();
-            Console.WriteLine("[밀거래상]:");
-            UI.Instance.shopScene(); // 상인 이미지;
             Console.WriteLine("[장착아이템]\n");
             Console.WriteLine("[보유골드]");
             Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
@@ -161,8 +155,6 @@ namespace TimeEater
         public void BuyItem()
         {
             Console.Clear();
-            Console.WriteLine("[밀거래상]:");
-            UI.Instance.shopScene(); // 상인 이미지;
             Console.WriteLine("[아이템 구매]\n");
             Console.WriteLine("[보유골드]");
             Console.WriteLine($"{DataManager.Instance.player.gold}G\n");

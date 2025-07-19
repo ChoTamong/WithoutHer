@@ -10,10 +10,7 @@
 
         public void Run()
         {
-            StartGameSceneOne();
-            StartGameSceneTwo();
-            StartGameSceneThird();
-            StartGameSceneFour();
+            StartGame();
             EnterNameAndJob();
             while (true)
             {
@@ -21,46 +18,22 @@
             }
         }
 
-        public void StartGameSceneOne()
+        public void StartGame()
         {
             Console.Clear();
-            UI.Instance.SceneOne();
-            Console.WriteLine("");
-            Console.ReadKey();
-        }
-        public void StartGameSceneTwo()
-        {
-            Console.Clear();
-            UI.Instance.SceneTwo();
-            Console.WriteLine("");
-            Console.ReadKey();
-        }
-        public void StartGameSceneThird()
-        {
-            Console.Clear();
-            UI.Instance.SceneThird();
-            Console.WriteLine("");
-            Console.ReadKey();
-        }
-        public void StartGameSceneFour()
-        {
-            Console.Clear();
-            UI.Instance.SceneFour();
-            Console.WriteLine("");
+            Console.WriteLine("[게임 시작]\n");
             Console.ReadKey();
         }
 
         public void EnterNameAndJob()
         {
             Console.Clear();
-            UI.Instance.FirstLine();
             Console.WriteLine("[이름 입력]");
             Console.Write("이름을 입력해주세요.\n>>> ");
 
             string inputName = Utility.readName();
 
             Console.Clear();
-            UI.Instance.Miorror();
             Console.WriteLine("[나의 모습]\n");
             Console.WriteLine("거울에 비친 내 모습을 바라본다.\n");
             Console.WriteLine("1. 왜소하다");
@@ -81,12 +54,11 @@
         public void ShowMenu()
         {
             Console.Clear();
-            UI.Instance.Title();
             Console.WriteLine("[메인 메뉴]\n");
             Console.WriteLine("환영합니다.\n");
             Console.WriteLine("1. 상태 확인");
             Console.WriteLine("2. 인벤토리");
-            Console.WriteLine("3. 밀거래상");
+            Console.WriteLine("3. 상점");
             Console.WriteLine("4. 던전 진입");
             Console.WriteLine("0. 게임 종료");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
