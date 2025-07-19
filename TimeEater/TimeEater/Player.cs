@@ -67,7 +67,10 @@
 
         public void PlayerInfo()
         {
-
+            Console.WriteLine($"이름     : {name}");
+            Console.WriteLine($"HP       : {nowHp}/{hp}");
+            Console.WriteLine($"MP       : {nowMp}/{mp}");
+            Console.WriteLine(extarAck == 0 ? $"공격력   : {attack}" : $"공격력   : {attack + extarAck} + ({extarAck})");
         }
 
         public void PlayerStatus(PlayerStatusDisplayMode mode)
