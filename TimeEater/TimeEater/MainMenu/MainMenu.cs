@@ -87,7 +87,7 @@
             Console.WriteLine("1. 상태 확인");
             Console.WriteLine("2. 인벤토리");
             Console.WriteLine("3. 밀거래상");
-            Console.WriteLine("4. 던전 진입");
+            Console.WriteLine("4. 탈옥하기");
             Console.WriteLine("0. 게임 종료");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
 
