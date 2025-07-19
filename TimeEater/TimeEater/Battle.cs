@@ -45,6 +45,16 @@ namespace TimeEater
         // UI
         public UI ui;
 
+        //public int currentCursorPos;
+        //public int firstCursorPos;
+        public int oriCursorXPos;
+        public int oriCursorYPos;
+
+        //public int cursorXPos;
+        //public int cursorYPos;
+
+        string space = new string(' ', 80);
+
         public void InitPlayer()
         {
             dataManager = DataManager.Instance;
@@ -56,9 +66,11 @@ namespace TimeEater
         public void EnterDungeon()
         {
             Console.Clear();
+            UI.Instance.Escape();
             Console.WriteLine("탈옥하시겠습니까?");
             Console.WriteLine("1. 예");
             Console.WriteLine("2. 아니오");
+            Console.Write(">> ");
             actNumber = Utility.readNum(1, 2);
 
             switch (actNumber)
@@ -77,24 +89,15 @@ namespace TimeEater
         {
             Console.Clear();
 
-            UI.Instance.Art1();
-
-            DrawPlayer(); // 플레이어 아트 + 대사 
+            UI.Instance.Battle();
 
             GenerateRandomMonsters(); // 몬스터 랜덤 생성 
 
+            //PrintPlayerInfo(); // 내정보 출력
+
             PrintRandomMonsters(monsterDisplayMode); // 랜덤 몬스터 출력
 
-            PrintPlayerInfo(); // 내정보 출력
-
             SetBattleActNumber(); // 원하는 행동 입력 
-        }
-
-        public void DrawPlayer()
-        {
-            ui.Art1();
-            Console.WriteLine("~~~~~");
-            Console.ReadKey();
         }
 
         public void GenerateRandomMonsters()
@@ -103,7 +106,7 @@ namespace TimeEater
 
             monsterCount = Utility.returnRandomNum(1, 5); // 1 ~ 4 사이 랜덤 숫자로 몬스터 개수를 설정
 
-            for(int i = 0; i < monsterCount; i++)
+            for (int i = 0; i < monsterCount; i++)
             {
                 randomIndex = Utility.returnRandomNum(0, 4); // 0 ~ 4 사이 인덱스 
 
@@ -117,9 +120,15 @@ namespace TimeEater
         public void PrintRandomMonsters(MonsterDisplayMode displayMode)
         {
             Console.Clear();
-            Console.WriteLine("Battle!!\n");
 
-            for(int i = 0; i < randomMonsterList.Count; i++)
+            UI.Instance.Battle();
+
+            oriCursorXPos = Console.CursorLeft;
+            oriCursorYPos = Console.CursorTop;
+            //currentCursorPos = Console.CursorTop;
+            //Console.WriteLine("Battle!!\n");
+
+            for (int i = 0; i < randomMonsterList.Count; i++)
             {
                 monsterNumber = displayMode == MonsterDisplayMode.Attack ? (i + 1).ToString() : "";
 
@@ -127,28 +136,31 @@ namespace TimeEater
                 if (randomMonsterList[i].isDead)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkGray; // 죽은 몬스터 색상을 어둡게 설정 
-                    Console.WriteLine("적 그림");
+                    //Console.SetCursorPosition(70, currentCursorPos - 7);
                     Console.WriteLine($"{monsterNumber}Lv.{randomMonsterList[i].level} {randomMonsterList[i].name} Dead");
                 }
                 else
                 {
                     //Console.ResetColor();
-                    Console.WriteLine("적 그림");
+                    //Console.SetCursorPosition(70, Cursor.cursorYPos + i);
+                    //Console.SetCursorPosition(Cursor.cursorXPos, Cursor.cursorYPos + i);
                     Console.WriteLine($"{monsterNumber} Lv.{randomMonsterList[i].level} {randomMonsterList[i].name} HP {randomMonsterList[i].maxHp}");
                 }
 
                 Console.ResetColor(); // 다음 콘솔 출력 때 어두운 색상이 나오지 않게 다시 리셋 
             }
+
+            //Console.SetCursorPosition(oriCursorXPos, oriCursorYPos);
         }
 
         public void PrintPlayerInfo()
         {
-            Console.WriteLine("\n플레이어 그림");
-            Console.WriteLine("\n[내정보]");
+            //player.PlayerStatus(PlayerStatusDisplayMode.Info);
+            //Console.SetCursorPosition(Cursor.cursorXPos, Cursor.cursorYPos - 2);
+            //Console.WriteLine("Battle!!\n");
+            player.PlayerInfo();
 
-            player.PlayerStatus(PlayerStatusDisplayMode.Info);
-
-            if(monsterDisplayMode == MonsterDisplayMode.Attack)
+            if (monsterDisplayMode == MonsterDisplayMode.Attack)
                 Console.WriteLine("\n0. 취소");
             else
                 Console.WriteLine("\n1. 공격\n");
@@ -156,17 +168,17 @@ namespace TimeEater
 
         public void SetBattleActNumber()
         {
-            Console.WriteLine("원하시는 행동을 입력해주세요."); // 1. 공격 (나머지는 아직 없음)
+            Console.WriteLine("\n원하시는 행동을 입력해주세요. (1. 공격)"); // 1. 공격 (나머지는 아직 없음)
             Console.Write(">> ");
             actNumber = Utility.readNum(1, 1);
 
             switch (actNumber)
             {
                 // 공격 
-                case 1: 
+                case 1:
                     monsterDisplayMode = MonsterDisplayMode.Attack;
                     PrintRandomMonsters(monsterDisplayMode);
-                    PrintPlayerInfo();
+                    //PrintPlayerInfo();
                     SetTarget();
                     AttackMonster(player, targetMonster);
                     break;
@@ -175,12 +187,12 @@ namespace TimeEater
 
         public void SetTarget()
         {
-            Console.WriteLine("\n대상을 선택해주세요.");
-            Console.Write(">> ");
+            Console.WriteLine($"\n대상을 선택해주세요.{WriteOverLine(space)}");
+            Console.Write(">>  ");
             targetNumber = Utility.readNum(0, randomMonsterList.Count); // 랜덤 몬스터 수만큼 
 
             // 대상 몬스터들 내에서 선택하면
-            if(1 <= targetNumber && targetNumber <= randomMonsterList.Count)
+            if (1 <= targetNumber && targetNumber <= randomMonsterList.Count)
             {
                 // 이미 죽은 몬스터를 공격했다면
                 if (randomMonsterList[targetNumber - 1].isDead)
@@ -192,7 +204,7 @@ namespace TimeEater
                 {
                     // 타겟 몬스터 설정 
                     targetMonster = randomMonsterList[targetNumber - 1];
-                    Console.WriteLine($"타겟 몬스터 : {targetMonster.name}"); // 확인용 
+                    //Console.WriteLine($"타겟 몬스터 : {targetMonster.name}"); // 확인용 
                 }
             }
             else
@@ -216,11 +228,14 @@ namespace TimeEater
         public void AttackMonster(Player player, Monster targetMonster)
         {
             Console.Clear();
-            Console.WriteLine("(배틀씬)");
-            Console.WriteLine("플레이어, 적 그림");
+
+            UI.Instance.Battle();
+
+            //Console.WriteLine("(배틀씬)");
+            //Console.WriteLine("플레이어, 적 그림");
 
             // 기존 공격력의 10% 
-            attackVariance = (player.attack + player.extarAck) * 0.1f; 
+            attackVariance = (player.attack + player.extarAck) * 0.1f;
 
             // 오차가 소수점이면 올림처리
             if (attackVariance % 1 != 0)
@@ -231,15 +246,16 @@ namespace TimeEater
             finalAttack = Utility.returnRandomNum(min, max);
 
             // 몬스터 공격
-            Console.WriteLine("Battle!!\n");
-            Console.WriteLine($"{player.name} 의 공격!");
+            //Console.SetCursorPosition(Cursor.cursorXPos, Cursor.cursorYPos);
+            Console.WriteLine($"Battle!!{WriteOverLine(space)}");
+            Console.WriteLine($"{player.name} 의 공격!{WriteOverLine(space)}");
 
             originHealth = targetMonster.maxHp;
             targetMonster.maxHp -= (int)finalAttack;
 
-            Console.WriteLine($"Lv.{targetMonster.level} {targetMonster.name}을(를) 맞췄습니다. [데미지 : {finalAttack}]");
-
-            Console.WriteLine($"Lv.{targetMonster.level} {targetMonster.name}");
+            Console.WriteLine($"Lv.{targetMonster.level} {targetMonster.name}을(를) 맞췄습니다. [데미지 : {finalAttack}]{WriteOverLine(space)}");
+            //Console.WriteLine($"{WriteOverLine(space)}");
+            Console.WriteLine($"Lv.{targetMonster.level} {targetMonster.name}{WriteOverLine(space)}");
 
             if (targetMonster.maxHp <= 0)
             {
@@ -249,7 +265,7 @@ namespace TimeEater
             }
             else
             {
-                Console.WriteLine($"HP {originHealth} -> {targetMonster.maxHp}");
+                Console.WriteLine($"HP {originHealth} -> {targetMonster.maxHp}{WriteOverLine(space)}");
             }
 
             // 적 턴으로 넘어가기 전에 적이 모두 죽었으면 
@@ -264,12 +280,12 @@ namespace TimeEater
 
         public void PlayerTurn()
         {
-            Console.WriteLine("0. 다음\n");
-            Console.Write(">> ");
+            Console.WriteLine($"\n0. 다음\n");
+            Console.Write(">>   ");
 
             actNumber = Utility.readNum(0, 0);
 
-            if(actNumber != 0)
+            if (actNumber != 0)
             {
                 Console.WriteLine("잘못된 입력입니다.");
                 PlayerTurn();
@@ -282,25 +298,37 @@ namespace TimeEater
 
         public void EnemyTurn()
         {
-            Console.WriteLine("(배틀씬)");
-            Console.WriteLine("플레이어, 적 그림");
-            Console.WriteLine("Battle!!\n");
+            //Console.WriteLine("(배틀씬)");
+            //Console.WriteLine("플레이어, 적 그림");
+            //Console.SetCursorPosition(Cursor.cursorXPos, Cursor.cursorYPos);
+            Console.Clear();
+            UI.Instance.Battle();
+
+            Console.WriteLine("Battle!!");
+            //Console.WriteLine($"{WriteOverLine(space)}");
+            //Console.WriteLine($"{WriteOverLine(space)}");
+
+            int xPos = Console.CursorLeft;
+            int yPos = Console.CursorTop + 1;
 
             // 위에 표시된 몬스터부터 공격
             for (int i = 0; i < randomMonsterList.Count; i++)
             {
                 if (!randomMonsterList[i].isDead)
                 {
-                    Console.WriteLine($"Lv.{randomMonsterList[i].name} 의 공격!");
+                    Console.Clear();
+                    UI.Instance.Battle();
+                    //Console.SetCursorPosition(xPos, yPos);
+                    Console.WriteLine($"Lv.{randomMonsterList[i].name} 의 공격!{WriteOverLine(space)}");
                     originHealth = player.hp;
                     player.hp -= randomMonsterList[i].attack;
                     if (player.hp < 0) player.hp = 0;
 
                     //Chad 을(를) 맞췄습니다.  [데미지: 6]
-                    Console.WriteLine($"{player.name} 을(를) 맞췄습니다.  [데미지 : {randomMonsterList[i].attack}]");
+                    Console.WriteLine($"{player.name} 을(를) 맞췄습니다.  [데미지 : {randomMonsterList[i].attack}]{WriteOverLine(space)}");
 
                     //Lv.1 Chad
-                    Console.WriteLine($"\nLv.{player.level} {player.name}");
+                    Console.WriteLine($"\nLv.{player.level} {player.name}{WriteOverLine(space)}");
                     //HP 100-> 94
                     Console.WriteLine($"HP {originHealth} -> {player.hp}");
 
@@ -309,7 +337,7 @@ namespace TimeEater
                     Console.Write(">> ");
                     actNumber = Utility.readNum(0, 0);
 
-                    
+
                 }
             }
             // 몬스터 공격 끝
@@ -339,39 +367,59 @@ namespace TimeEater
 
         public void Finish(Player player, int originalHealth)
         {
-            Console.WriteLine("승리 그림");
-            Console.WriteLine("Battle!! - Result\n");
+            Console.Clear();
+            UI.Instance.Win();
+            //Console.WriteLine("승리 그림");
+            //Console.WriteLine("Battle!! - Result\n");
 
-            Console.WriteLine("Victory\n");
+            //Console.WriteLine("Victory\n");
 
-            Console.WriteLine($"던전에서 몬스터 {monsterCount}마리를 잡았습니다.\n");
+            //Console.WriteLine($"던전에서 몬스터 {monsterCount}마리를 잡았습니다.\n");
 
-            Console.WriteLine($"Lv.{player.level} {player.name}");
-            Console.WriteLine($"HP {player.hp}");
+            //Console.WriteLine($"Lv.{player.level} {player.name}");
+            //Console.WriteLine($"HP {player.hp}");
 
-            Console.WriteLine("0. 다음\n");
+            //Console.WriteLine("0. 다음\n");
 
-            Console.Write(">> ");
+            //Console.Write(">> ");
             Environment.Exit(0); // 게임 종료 (프로그램 종료)
         }
 
         public void Lose(Player player, int originHealth)
         {
-            Console.WriteLine("패배 그림");
-            Console.WriteLine("Battle!! - Result\n");
+            Console.Clear();
+            UI.Instance.Lose();
+            //Console.WriteLine("패배 그림");
+            //Console.WriteLine("Battle!! - Result\n");
 
-            Console.WriteLine("You Lose\n");
+            //Console.WriteLine("You Lose\n");
 
-            Console.WriteLine($"Lv.{player.level} {player.name}");
+            //Console.WriteLine($"Lv.{player.level} {player.name}");
 
-            Console.WriteLine($"{originHealth} -> {player.hp}");
+            //Console.WriteLine($"{originHealth} -> {player.hp}");
 
-            Console.WriteLine("0.다음\n");
+            //Console.WriteLine("0.다음\n");
 
-            Console.Write(">> ");
+            //Console.Write(">> ");
 
             Console.WriteLine("게임이 종료됩니다.");
             Environment.Exit(0); // 게임 종료 (프로그램 종료)
+        }
+
+        public string WriteOverLine(string message)
+        {
+            int consoleWidth = Console.WindowWidth;
+
+            //// 줄바꿈 방지를 위해 \r (커서를 현재 줄 맨 앞으로)
+            //Console.Write("\r");
+
+            // 문자열이 너무 길면 자름
+            if (message.Length >= consoleWidth)
+            {
+                message = message.Substring(0, consoleWidth - 1);
+                //Console.Write(message.Substring(0, consoleWidth - 1));
+            }
+            return message;
         }
     }
 }

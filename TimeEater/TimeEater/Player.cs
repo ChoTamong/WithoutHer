@@ -65,6 +65,11 @@
             jobObject?.UseSkill(); // 직업별 스킬 실행
         }
 
+        public void PlayerInfo()
+        {
+
+        }
+
         public void PlayerStatus(PlayerStatusDisplayMode mode)
         {
             if (mode == PlayerStatusDisplayMode.Normal)
