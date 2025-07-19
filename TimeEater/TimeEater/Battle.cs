@@ -45,7 +45,7 @@ namespace TimeEater
         // UI
         public UI ui;
 
-        string space = new string(' ', 80);
+        //string space = new string(' ', 80);
 
         public void InitPlayer()
         {
@@ -162,7 +162,7 @@ namespace TimeEater
 
         public void SetTarget()
         {
-            Console.WriteLine($"\n대상을 선택해주세요.{WriteOverLine(space)}");
+            Console.WriteLine($"\n대상을 선택해주세요.");
             Console.Write(">>  ");
             targetNumber = Utility.readNum(0, randomMonsterList.Count); // 랜덤 몬스터 수만큼 
 
@@ -217,14 +217,14 @@ namespace TimeEater
             finalAttack = Utility.returnRandomNum(min, max);
 
             // 몬스터 공격
-            Console.WriteLine($"Battle!!{WriteOverLine(space)}");
-            Console.WriteLine($"{player.name} 의 공격!{WriteOverLine(space)}");
+            Console.WriteLine($"Battle!!");
+            Console.WriteLine($"{player.name} 의 공격!");
 
             originHealth = targetMonster.maxHp;
             targetMonster.maxHp -= (int)finalAttack;
 
-            Console.WriteLine($"Lv.{targetMonster.level} {targetMonster.name}을(를) 맞췄습니다. [데미지 : {finalAttack}]{WriteOverLine(space)}");
-            Console.WriteLine($"Lv.{targetMonster.level} {targetMonster.name}{WriteOverLine(space)}");
+            Console.WriteLine($"Lv.{targetMonster.level} {targetMonster.name}을(를) 맞췄습니다. [데미지 : {finalAttack}]");
+            Console.WriteLine($"Lv.{targetMonster.level} {targetMonster.name}");
 
             if (targetMonster.maxHp <= 0)
             {
@@ -234,7 +234,7 @@ namespace TimeEater
             }
             else
             {
-                Console.WriteLine($"HP {originHealth} -> {targetMonster.maxHp}{WriteOverLine(space)}");
+                Console.WriteLine($"HP {originHealth} -> {targetMonster.maxHp}");
             }
 
             // 적 턴으로 넘어가기 전에 적이 모두 죽었으면 
@@ -283,13 +283,13 @@ namespace TimeEater
                     Console.Clear();
                     UI.Instance.Battle();
 
-                    Console.WriteLine($"Lv.{randomMonsterList[i].name} 의 공격!{WriteOverLine(space)}");
+                    Console.WriteLine($"Lv.{randomMonsterList[i].name} 의 공격!");
                     originHealth = player.nowHp;
                     player.nowHp -= randomMonsterList[i].attack;
                     if (player.nowHp < 0) player.nowHp = 0;
 
-                    Console.WriteLine($"{player.name} 을(를) 맞췄습니다.  [데미지 : {randomMonsterList[i].attack}]{WriteOverLine(space)}");
-                    Console.WriteLine($"\nLv.{player.level} {player.name}{WriteOverLine(space)}");
+                    Console.WriteLine($"{player.name} 을(를) 맞췄습니다.  [데미지 : {randomMonsterList[i].attack}]");
+                    Console.WriteLine($"\nLv.{player.level} {player.name}");
                     Console.WriteLine($"HP {originHealth} -> {player.nowHp}");
 
                     Console.WriteLine("\n0. 다음");
@@ -342,16 +342,16 @@ namespace TimeEater
             Environment.Exit(0); // 게임 종료 (프로그램 종료)
         }
 
-        public string WriteOverLine(string message)
-        {
-            int consoleWidth = Console.WindowWidth;
+        //public string WriteOverLine(string message)
+        //{
+        //    int consoleWidth = Console.WindowWidth;
 
-            // 문자열이 너무 길면 자름
-            if (message.Length >= consoleWidth)
-            {
-                message = message.Substring(0, consoleWidth - 1);
-            }
-            return message;
-        }
+        //    // 문자열이 너무 길면 자름
+        //    if (message.Length >= consoleWidth)
+        //    {
+        //        message = message.Substring(0, consoleWidth - 1);
+        //    }
+        //    return message;
+        //}
     }
 }
