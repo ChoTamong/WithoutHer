@@ -67,9 +67,12 @@
 
         public void PlayerInfo()
         {
+            //Cursor.cursorXPos = Console.CursorLeft;
+            //Cursor.cursorYPos = Console.CursorTop;
+
             Console.WriteLine($"이름     : {name}");
             Console.WriteLine($"HP       : {nowHp}/{hp}");
-            Console.WriteLine($"MP       : {nowMp}/{mp}");
+            //Console.WriteLine($"MP       : {nowMp}/{mp}");
             Console.WriteLine(extarAck == 0 ? $"공격력   : {attack}" : $"공격력   : {attack + extarAck} + ({extarAck})");
         }
 
