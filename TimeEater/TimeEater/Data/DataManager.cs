@@ -19,10 +19,10 @@
         public List<MonsterData> monsterList = new List<MonsterData>()
         {
             // string name, int level, int type, int maxHp, int attack, int defense
-            new MonsterData("선임 교도관", 2, 1, 10, 5, 0),
-            new MonsterData("교도부사관", 3, 2, 10, 7, 0),
-            new MonsterData("교도관리소장", 5, 3, 10, 10, 0),
-            new MonsterData("실라", 5, 4, 50, 10, 15)
+            new MonsterData("신입교도관", 2, 1, 15, 5, 0),
+            new MonsterData("선임교도관", 3, 2, 20, 7, 0),
+            new MonsterData("교도부사관", 4, 3, 30, 10, 0),
+            new MonsterData("교도관리소장", 5, 4, 50, 15, 0)
         };
 
         public Player player;

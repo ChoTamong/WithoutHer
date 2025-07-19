@@ -67,30 +67,31 @@
 
         public void PlayerInfo()
         {
-            //Cursor.cursorXPos = Console.CursorLeft;
-            //Cursor.cursorYPos = Console.CursorTop;
-
             Console.WriteLine($"이름     : {name}");
             Console.WriteLine($"HP       : {nowHp}/{hp}");
-            //Console.WriteLine($"MP       : {nowMp}/{mp}");
+            Console.WriteLine($"MP       : {nowMp}/{mp}");
             Console.WriteLine(extarAck == 0 ? $"공격력   : {attack}" : $"공격력   : {attack + extarAck} + ({extarAck})");
         }
 
         public void PlayerStatus(PlayerStatusDisplayMode mode)
         {
-            if(mode == PlayerStatusDisplayMode.Normal)
+            if (mode == PlayerStatusDisplayMode.Normal)
                 Console.Clear();
 
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("[상태확인]");
+            UI.Instance.Statusline();
             Console.WriteLine("=== PLAYER STATUS ===");
             Console.WriteLine($"이름     : {name}");
-            Console.WriteLine($"직업     : {job}");
+            Console.WriteLine($"체격     : {job}");
             Console.WriteLine($"레벨     : {level}");
             Console.WriteLine($"HP       : {nowHp}/{hp}");
             Console.WriteLine($"MP       : {nowMp}/{mp}");
             Console.WriteLine(extarAck == 0 ? $"공격력   : {attack}" : $"공격력   : {attack + extarAck} + ({extarAck})");
             Console.WriteLine(extarDef == 0 ? $"방어력   : {defence}" : $"방어력   : {defence + extarDef} + ({extarDef})");
             Console.WriteLine($"Gold     : {gold}");
-            Console.WriteLine("======================");
+            Console.WriteLine("=====================");
 
             if(mode == PlayerStatusDisplayMode.Normal)
             {
