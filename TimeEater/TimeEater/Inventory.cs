@@ -4,6 +4,7 @@ namespace TimeEater
 {
     public class Inventory
     {
+        // develop_
         public static List<Item> BoughtItemToInventory = new List<Item>() 
         {
             new Item("종이 복대", "신문지 뭉치로 만든 복대", 0, 5, 1500),
