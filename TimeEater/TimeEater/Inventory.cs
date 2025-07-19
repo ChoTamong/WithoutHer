@@ -4,22 +4,18 @@ namespace TimeEater
 {
     public class Inventory
     {
-        // develop_
-        public static List<Item> BoughtItemToInventory = new List<Item>() 
-        {
-            new Item("종이 복대", "신문지 뭉치로 만든 복대", 0, 5, 1500),
-            new Item("낡은 송곳", "작업실에서 가져온 송곳", 1, 5, 1500)
-        };
-        public static List<Item> BoughtRecoverItemToInventory = new List<Item>()
-        {
-            new Item("물", "목마를 때 마시는 물", 2, 5, 500)
-        };
-
         public static List<Item> EquippedItem = new List<Item>();
         //public static List<Item> UseAndDeletItem = new List<Item>();
 
+        public DataManager dataManager = DataManager.Instance;
+        public List<Item> boughtRecoverItemToInventory;
+        public List<Item> boughtItemToInventory;
+
         public void FirstShowInventory()
         {
+            boughtRecoverItemToInventory = dataManager.boughtRecoverItemToInventory;
+            boughtItemToInventory = dataManager.boughtItemToInventory;
+
             Console.Clear();
             Console.WriteLine("");
             Console.WriteLine("");
@@ -53,7 +49,7 @@ namespace TimeEater
             Console.WriteLine("[사용 아이템]");
             UI.Instance.Inventoryline();
             Console.WriteLine("[아이템 목록]\n");
-            foreach (var displayItem in BoughtRecoverItemToInventory)
+            foreach (var displayItem in boughtRecoverItemToInventory)
             {
                 Console.WriteLine($"- {displayItem.name} | {(displayItem.type == 2 ? "HP" : "MP")} + {displayItem.power} | {displayItem.description} ");
             }
@@ -79,15 +75,15 @@ namespace TimeEater
             Console.WriteLine("[사용 아이템]");
             UI.Instance.Inventoryline();
             Console.WriteLine("[아이템 목록]\n");
-            foreach (var displayItem in BoughtRecoverItemToInventory)
+            foreach (var displayItem in boughtRecoverItemToInventory)
             {
-                int selectedIndex = BoughtRecoverItemToInventory.IndexOf(displayItem) + 1;
+                int selectedIndex = boughtRecoverItemToInventory.IndexOf(displayItem) + 1;
                 Console.WriteLine($"- {selectedIndex} {displayItem.name} | {(displayItem.type == 2 ? "HP" : "MP")} + {displayItem.power} | {displayItem.description} ");
             }
             Console.WriteLine("\n0. 나가기");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
 
-            int inputNum = Utility.readNum(0, BoughtRecoverItemToInventory.Count);
+            int inputNum = Utility.readNum(0, boughtRecoverItemToInventory.Count);
             
             switch (inputNum)
             {
@@ -95,12 +91,12 @@ namespace TimeEater
                     return;
                 default:
                     int targetItem = inputNum - 1;
-                    var selectedItem = BoughtRecoverItemToInventory[targetItem];
-                    bool isEquipped = BoughtRecoverItemToInventory.Contains(selectedItem);
+                    var selectedItem = boughtRecoverItemToInventory[targetItem];
+                    bool isEquipped = boughtRecoverItemToInventory.Contains(selectedItem);
 
                     if (isEquipped)
                     {
-                        BoughtRecoverItemToInventory.Remove(selectedItem);
+                        boughtRecoverItemToInventory.Remove(selectedItem);
                         if (selectedItem.type == 2)
                         { 
                             DataManager.Instance.player.nowHp += selectedItem.power;
@@ -131,7 +127,7 @@ namespace TimeEater
             Console.WriteLine("[장착 아이템]");
             UI.Instance.Inventoryline();
             Console.WriteLine("[아이템 목록]\n");
-            foreach (var getIem in BoughtItemToInventory)
+            foreach (var getIem in boughtItemToInventory)
             {
                 string displayEquipped = EquippedItem.Contains(getIem) ? "[E]" : "";
                 Console.WriteLine($"- {displayEquipped} {getIem.name} | {(getIem.type == 0 ? "공격력" : "방어력")} + {getIem.power} | {getIem.description} ");
@@ -160,23 +156,23 @@ namespace TimeEater
             Console.WriteLine("[장착 아이템]");
             UI.Instance.Inventoryline();
             Console.WriteLine("[아이템 목록]\n");
-            foreach (var getIem in BoughtItemToInventory)
+            foreach (var getIem in boughtItemToInventory)
             {
-                int selectedIndex = BoughtItemToInventory.IndexOf(getIem) + 1;
+                int selectedIndex = boughtItemToInventory.IndexOf(getIem) + 1;
                 string displayEquipped = EquippedItem.Contains(getIem) ? "[E]" : "";
                 Console.WriteLine($"- {selectedIndex} {displayEquipped} {getIem.name} | {(getIem.type == 0 ? "공격력" : "방어력")} + {getIem.power} | {getIem.description} ");
             }
             Console.WriteLine("\n0. 나가기");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
 
-            int inputNum = Utility.readNum(0, BoughtItemToInventory.Count);
+            int inputNum = Utility.readNum(0, boughtItemToInventory.Count);
             switch (inputNum)
             {
                 case 0:
                     return;
                 default:
                     int targetItem = inputNum - 1;
-                    var selectedItem = BoughtItemToInventory[targetItem];
+                    var selectedItem = boughtItemToInventory[targetItem];
                     bool isEquipped = EquippedItem.Contains(selectedItem);
 
                     if (isEquipped)

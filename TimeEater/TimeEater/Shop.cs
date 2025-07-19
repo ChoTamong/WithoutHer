@@ -5,22 +5,19 @@ namespace TimeEater
 {
     public class Shop
     {
-        public static List<Item> ShopItems = new List<Item>()
-        {
-            new Item("DIY 블레이드", "칫솔 이었던 것", 0, 8, 1500),
-            new Item("잡지 뭉치", "칼은 맞을 수 있을지도?", 1, 5, 2000),
-            new Item("총", "교도관 몰래 훔쳐 온 총.", 0, 99, 10000),
-            new Item("몽둥이", "교도관이 버린 몽둥이.", 0, 20, 3500)
-        };
-
-        public static List<Item> RecoveryItem = new List<Item>() 
-        {
-            new Item("담배", "체력을 회복하는 아이템", 2, 50, 500),
-            new Item("각성제", "마나를 회복하는 아이템", 3, 30, 300)
-        };
+        public DataManager dataManager = DataManager.Instance;
+        public List<Item> recoveryItem;
+        public List<Item> boughtRecoverItemToInventory;
+        public List<Item> shopItems;
+        public List<Item> boughtItemToInventory;
 
         public void FirstItemShop()
         {
+            recoveryItem = dataManager.recoveryItem;
+            boughtRecoverItemToInventory = dataManager.boughtRecoverItemToInventory;
+            shopItems = dataManager.shopItems;
+            boughtItemToInventory = dataManager.boughtItemToInventory;
+
             Console.Clear();
             Console.WriteLine("[밀거래상]:");
             UI.Instance.shopScene(); // 상인 이미지;
@@ -56,9 +53,9 @@ namespace TimeEater
             Console.WriteLine("[보유골드]");
             Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
             Console.WriteLine("[아이템 목록]\n");
-            foreach (var displayItem in RecoveryItem)
+            foreach (var displayItem in recoveryItem)
             {
-                string displayPrice = Inventory.BoughtRecoverItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
+                string displayPrice = boughtRecoverItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
                 Console.WriteLine($"- {displayItem.name} | {(displayItem.type == 2 ? "HP" : "MP")} + {displayItem.power} | {displayItem.description} | {displayPrice}");
             }
             Console.WriteLine("\n1. 아이템 구매");
@@ -85,21 +82,21 @@ namespace TimeEater
             Console.WriteLine("[보유골드]");
             Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
             Console.WriteLine("[아이템 목록]\n");
-            foreach (var displayItem in RecoveryItem)
+            foreach (var displayItem in recoveryItem)
             {
-                int selectedIndex = RecoveryItem.IndexOf(displayItem) + 1;
-                string displayPrice = Inventory.BoughtRecoverItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
+                int selectedIndex = recoveryItem.IndexOf(displayItem) + 1;
+                string displayPrice = boughtRecoverItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
                 Console.WriteLine($"- {selectedIndex} {displayItem.name} | {(displayItem.type == 2 ? "HP" : "MP")} + {displayItem.power} | {displayItem.description} | {displayPrice}");
             }
             Console.WriteLine("\n0. 나가기");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
-            int inputNum = Utility.readNum(0, RecoveryItem.Count);
+            int inputNum = Utility.readNum(0, recoveryItem.Count);
             switch (inputNum)
             {
                 default:
                     int targetItem = inputNum - 1;
-                    var boughtItem = RecoveryItem[targetItem];
-                    if (Inventory.BoughtRecoverItemToInventory.Contains(boughtItem))
+                    var boughtItem = recoveryItem[targetItem];
+                    if (boughtRecoverItemToInventory.Contains(boughtItem))
                     {
                         Console.WriteLine("이런 벌써 산 물건이야...");
                     }
@@ -109,7 +106,7 @@ namespace TimeEater
                         {
                             Console.WriteLine("아주 좋은 선택이야... ㅎㅎㅎ");
                             DataManager.Instance.player.gold -= boughtItem.price;
-                            Inventory.BoughtRecoverItemToInventory.Add(boughtItem);
+                            boughtRecoverItemToInventory.Add(boughtItem);
                         }
                         else
                         {
@@ -137,9 +134,9 @@ namespace TimeEater
             Console.WriteLine("[보유골드]");
             Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
             Console.WriteLine("[아이템 목록]\n");
-            foreach (var displayItem in ShopItems)
+            foreach (var displayItem in shopItems)
             {
-                string displayPrice = Inventory.BoughtItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
+                string displayPrice = boughtItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
                 Console.WriteLine($"- {displayItem.name} | {(displayItem.type == 0 ? "공격력" : "방어력")} + {displayItem.power} | {displayItem.description} | {displayPrice}");
             }
             Console.WriteLine("\n1. 아이템 구매");
@@ -167,24 +164,24 @@ namespace TimeEater
             Console.WriteLine("[보유골드]");
             Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
             Console.WriteLine("[아이템 목록]\n");
-            foreach (var displayItem in ShopItems)
+            foreach (var displayItem in shopItems)
             {
-                int selectedIndex = ShopItems.IndexOf(displayItem) + 1;
-                string displayPrice = Inventory.BoughtItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
+                int selectedIndex = shopItems.IndexOf(displayItem) + 1;
+                string displayPrice = boughtItemToInventory.Contains(displayItem) ? "구매완료" : $"{displayItem.price}G";
                 Console.WriteLine($"- {selectedIndex} {displayItem.name} | {(displayItem.type == 0 ? "공격력" : "방어력")} + {displayItem.power} | {displayItem.description} | {displayPrice}");
             }
             Console.WriteLine("\n0. 나가기");
             Console.Write("\n원하는 행동을 입력해주세요.\n>>> ");
 
-            int inputNum = Utility.readNum(0, ShopItems.Count);
+            int inputNum = Utility.readNum(0, shopItems.Count);
 
             switch (inputNum)
             {
                 default:
                     int targetItem = inputNum - 1;
-                    var boughtItem = ShopItems[targetItem];
+                    var boughtItem = shopItems[targetItem];
 
-                    if (Inventory.BoughtItemToInventory.Contains(boughtItem))
+                    if (boughtItemToInventory.Contains(boughtItem))
                     {
                         Console.WriteLine("이런 벌써 산 물건이야...");
                     }
@@ -195,7 +192,7 @@ namespace TimeEater
                         {
                             Console.WriteLine("아주 좋은 선택이야... ㅎㅎㅎ");
                             DataManager.Instance.player.gold -= boughtItem.price;
-                            Inventory.BoughtItemToInventory.Add(boughtItem);
+                            boughtItemToInventory.Add(boughtItem);
                         }
                         else
                         {

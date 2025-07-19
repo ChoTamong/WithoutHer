@@ -2,32 +2,42 @@
 {
     public class DataManager : Singleton<DataManager>
     {
-        // 데이터 리스트 관리
-
-        //public static List<Item> baseItemAttribute = new List<Item>()
-        //{
-        //    new Item ("투구", "그냥 투구", 1, 5, 1500),
-        //    new Item ("갑옷", "그냥 갑옷", 1, 10, 2500),
-        //    new Item ("방패", "그냥 방패", 1, 7, 2000),
-        //    new Item ("검", "그냥 검", 0, 10, 1000),
-        //    new Item ("창", "그냥 창", 0, 15, 2000),
-        //    new Item ("도끼", "그냥 도끼", 0, 20, 3000),
-        //    new Item ("회복약", "체력을 회복하는 아이템", 2, 50, 500),
-        //    new Item ("마나약", "마나를 회복하는 아이템", 2, 30, 300)
-        //};
-
+        // Monster
         public List<MonsterData> monsterList = new List<MonsterData>()
         {
-            // string name, int level, int type, int maxHp, int attack, int defense
             new MonsterData("신입교도관", 2, 1, 15, 5, 0),
             new MonsterData("선임교도관", 3, 2, 20, 7, 0),
             new MonsterData("교도부사관", 4, 3, 30, 10, 0),
             new MonsterData("교도관리소장", 5, 4, 50, 15, 0)
         };
 
-        public Player player;
+        // Shop
+        public List<Item> shopItems = new List<Item>()
+        {
+            new Item("DIY 블레이드", "칫솔 이었던 것", 0, 8, 1500),
+            new Item("잡지 뭉치", "칼은 맞을 수 있을지도?", 1, 5, 2000),
+            new Item("총", "교도관 몰래 훔쳐 온 총.", 0, 99, 10000),
+            new Item("몽둥이", "교도관이 버린 몽둥이.", 0, 20, 3500)
+        };
+        public List<Item> recoveryItem = new List<Item>()
+        {
+            new Item("담배", "체력을 회복하는 아이템", 2, 50, 500),
+            new Item("각성제", "마나를 회복하는 아이템", 3, 30, 300)
+        };
 
-        // 가져가는 기능 (메서드), 가져갈 것들이 많다면 일부만 가져야 하면 만드는게 좋음. 
+        // Inventory
+        public List<Item> boughtItemToInventory = new List<Item>()
+        {
+            new Item("종이 복대", "신문지 뭉치로 만든 복대", 0, 5, 1500),
+            new Item("낡은 송곳", "작업실에서 가져온 송곳", 1, 5, 1500)
+        };
+        public List<Item> boughtRecoverItemToInventory = new List<Item>()
+        {
+            new Item("물", "목마를 때 마시는 물", 2, 5, 500)
+        };
+
+        // Player
+        public Player player;
     }
 
 }
