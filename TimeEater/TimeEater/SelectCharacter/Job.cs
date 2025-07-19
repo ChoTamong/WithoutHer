@@ -47,7 +47,7 @@ namespace TimeEater
 
     public class Normal : Job
     {
-        public override string Name => "도적";
+        public override string Name => "평범함";
         public override int BaseHP => 100;
         public override int NowHP => BaseHP;
         public override int BaseMP => 50;
