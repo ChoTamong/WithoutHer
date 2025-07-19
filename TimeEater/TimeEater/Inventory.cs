@@ -5,7 +5,6 @@ namespace TimeEater
     public class Inventory
     {
         public static List<Item> EquippedItem = new List<Item>();
-        //public static List<Item> UseAndDeletItem = new List<Item>();
 
         public DataManager dataManager = DataManager.Instance;
         public List<Item> boughtRecoverItemToInventory;
