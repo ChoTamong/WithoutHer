@@ -4,12 +4,14 @@
     public class MainMenu
     {
         Player player;
-        Inventory inventory = new Inventory();
-        Shop shop = new Shop();
-        Battle battle = new Battle();
+        Inventory inventory;
+        Shop shop;
+        Battle battle;
+        UI ui;
 
         public void Run()
         {
+            Init();
             StartGameSceneOne();
             StartGameSceneTwo();
             StartGameSceneThird();
@@ -21,31 +23,38 @@
             }
         }
 
+        public void Init()
+        {
+            shop = new Shop();
+            battle = new Battle();
+            ui = UI.Instance;
+        }
+
         public void StartGameSceneOne()
         {
             Console.Clear();
-            UI.Instance.SceneOne();
+            ui.SceneOne();
             Console.WriteLine("");
             Console.ReadKey();
         }
         public void StartGameSceneTwo()
         {
             Console.Clear();
-            UI.Instance.SceneTwo();
+            ui.SceneTwo();
             Console.WriteLine("");
             Console.ReadKey();
         }
         public void StartGameSceneThird()
         {
             Console.Clear();
-            UI.Instance.SceneThird();
+            ui.SceneThird();
             Console.WriteLine("");
             Console.ReadKey();
         }
         public void StartGameSceneFour()
         {
             Console.Clear();
-            UI.Instance.SceneFour();
+            ui.SceneFour();
             Console.WriteLine("");
             Console.ReadKey();
         }
@@ -53,14 +62,14 @@
         public void EnterNameAndJob()
         {
             Console.Clear();
-            UI.Instance.FirstLine();
+            ui.FirstLine();
             Console.WriteLine("[이름 입력]");
             Console.Write("이름을 입력해주세요.\n>>> ");
 
             string inputName = Utility.readName();
 
             Console.Clear();
-            UI.Instance.Miorror();
+            ui.Miorror();
             Console.WriteLine("[나의 모습]\n");
             Console.WriteLine("거울에 비친 내 모습을 바라본다.\n");
             Console.WriteLine("1. 왜소하다");
@@ -71,6 +80,7 @@
             int inputJob = Utility.readNum(1, 3);
 
             player = new Player(inputName, inputJob);
+            inventory = new Inventory();
 
             DataManager.Instance.player = player;
 
@@ -81,7 +91,7 @@
         public void ShowMenu()
         {
             Console.Clear();
-            UI.Instance.Title();
+            ui.Title();
             Console.WriteLine("[메인 메뉴]\n");
             Console.WriteLine("환영합니다.\n");
             Console.WriteLine("1. 상태 확인");

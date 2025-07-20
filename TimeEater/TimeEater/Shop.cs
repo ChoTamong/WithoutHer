@@ -5,22 +5,21 @@ namespace TimeEater
 {
     public class Shop
     {
-        public DataManager dataManager = DataManager.Instance;
+        public DataManager dataManager;
         public List<Item> recoveryItem;
         public List<Item> boughtRecoverItemToInventory;
         public List<Item> shopItems;
         public List<Item> boughtItemToInventory;
 
+        public UI ui;
+
         public void FirstItemShop()
         {
-            recoveryItem = dataManager.recoveryItem;
-            boughtRecoverItemToInventory = dataManager.boughtRecoverItemToInventory;
-            shopItems = dataManager.shopItems;
-            boughtItemToInventory = dataManager.boughtItemToInventory;
+            InitShop();
 
             Console.Clear();
             Console.WriteLine("[밀거래상]:");
-            UI.Instance.shopScene(); // 상인 이미지;
+            ui.shopScene(); // 상인 이미지;
             Console.WriteLine("어이.. 친구 뭐가 필요하지...?\n");
             Console.WriteLine("1. 장착 아이템");
             Console.WriteLine("2. 회복 아이템\n");
@@ -43,12 +42,23 @@ namespace TimeEater
                     return;
             }
         }
+
+        public void InitShop()
+        {
+            dataManager = DataManager.Instance;
+            recoveryItem = dataManager.recoveryItem;
+            boughtRecoverItemToInventory = dataManager.boughtRecoverItemToInventory;
+            shopItems = dataManager.shopItems;
+            boughtItemToInventory = dataManager.boughtItemToInventory;
+
+            ui = UI.Instance;
+        }
         
         public void ShowRecoveryItem()
         {
             Console.Clear();
             Console.WriteLine("[밀거래상]:");
-            UI.Instance.shopScene(); // 상인 이미지;
+            ui.shopScene(); // 상인 이미지;
             Console.WriteLine("[회복 아이템]\n");
             Console.WriteLine("[보유골드]");
             Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
@@ -77,7 +87,7 @@ namespace TimeEater
         {
             Console.Clear();
             Console.WriteLine("[밀거래상]:");
-            UI.Instance.shopScene(); // 상인 이미지;
+            ui.shopScene(); // 상인 이미지;
             Console.WriteLine("[회복 아이템 구매]\n");
             Console.WriteLine("[보유골드]");
             Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
@@ -129,7 +139,7 @@ namespace TimeEater
         {
             Console.Clear();
             Console.WriteLine("[밀거래상]:");
-            UI.Instance.shopScene(); // 상인 이미지;
+            ui.shopScene(); // 상인 이미지;
             Console.WriteLine("[장착아이템]\n");
             Console.WriteLine("[보유골드]");
             Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
@@ -159,7 +169,7 @@ namespace TimeEater
         {
             Console.Clear();
             Console.WriteLine("[밀거래상]:");
-            UI.Instance.shopScene(); // 상인 이미지;
+            ui.shopScene(); // 상인 이미지;
             Console.WriteLine("[아이템 구매]\n");
             Console.WriteLine("[보유골드]");
             Console.WriteLine($"{DataManager.Instance.player.gold}G\n");

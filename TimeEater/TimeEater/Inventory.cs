@@ -6,20 +6,21 @@ namespace TimeEater
     {
         public static List<Item> EquippedItem = new List<Item>();
 
-        public DataManager dataManager = DataManager.Instance;
+        public DataManager dataManager;
         public List<Item> boughtRecoverItemToInventory;
         public List<Item> boughtItemToInventory;
 
+        public UI ui;
+
         public void FirstShowInventory()
         {
-            boughtRecoverItemToInventory = dataManager.boughtRecoverItemToInventory;
-            boughtItemToInventory = dataManager.boughtItemToInventory;
+            InitInventory();
 
             Console.Clear();
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("[인벤토리]");
-            UI.Instance.Inventoryline();
+            ui.Inventoryline();
             Console.WriteLine("1. 장착 아이템");
             Console.WriteLine("2. 사용 아이템\n");
             Console.WriteLine("0. 나가기");
@@ -40,13 +41,22 @@ namespace TimeEater
             }
         }
 
+        public void InitInventory()
+        {
+            dataManager = DataManager.Instance;
+            boughtRecoverItemToInventory = dataManager.boughtRecoverItemToInventory;
+            boughtItemToInventory = dataManager.boughtItemToInventory;
+
+            ui = UI.Instance;
+        }
+
         public void ShowRecoveryItem()
         {
             Console.Clear();
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("[사용 아이템]");
-            UI.Instance.Inventoryline();
+            ui.Inventoryline();
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in boughtRecoverItemToInventory)
             {
@@ -72,7 +82,7 @@ namespace TimeEater
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("[사용 아이템]");
-            UI.Instance.Inventoryline();
+            ui.Inventoryline();
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in boughtRecoverItemToInventory)
             {
@@ -124,7 +134,7 @@ namespace TimeEater
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("[장착 아이템]");
-            UI.Instance.Inventoryline();
+            ui.Inventoryline();
             Console.WriteLine("[아이템 목록]\n");
             foreach (var getIem in boughtItemToInventory)
             {
@@ -153,7 +163,7 @@ namespace TimeEater
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("[장착 아이템]");
-            UI.Instance.Inventoryline();
+            ui.Inventoryline();
             Console.WriteLine("[아이템 목록]\n");
             foreach (var getIem in boughtItemToInventory)
             {

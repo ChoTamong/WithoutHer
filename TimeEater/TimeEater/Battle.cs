@@ -43,7 +43,7 @@ namespace TimeEater
         public int originHealth;
 
         // UI
-        public UI ui;
+        public UI ui = UI.Instance;
 
         //string space = new string(' ', 80);
 
@@ -51,14 +51,12 @@ namespace TimeEater
         {
             dataManager = DataManager.Instance;
             player = dataManager.player;
-
-            ui = UI.Instance;
         }
 
         public void EnterDungeon()
         {
             Console.Clear();
-            UI.Instance.Escape();
+            ui.Escape();
             Console.WriteLine("탈옥하시겠습니까?");
             Console.WriteLine("1. 예");
             Console.WriteLine("2. 아니오");
@@ -81,7 +79,7 @@ namespace TimeEater
         {
             Console.Clear();
 
-            UI.Instance.Battle();
+            ui.Battle();
 
             GenerateRandomMonsters(); // 몬스터 랜덤 생성 
 
@@ -111,7 +109,7 @@ namespace TimeEater
         {
             Console.Clear();
 
-            UI.Instance.Battle();
+            ui.Battle();
 
             for (int i = 0; i < randomMonsterList.Count; i++)
             {
@@ -203,7 +201,7 @@ namespace TimeEater
         {
             Console.Clear();
 
-            UI.Instance.Battle();
+            ui.Battle();
 
             // 기존 공격력의 10% 
             attackVariance = (player.attack + player.extarAck) * 0.1f;
@@ -268,7 +266,7 @@ namespace TimeEater
         public void EnemyTurn()
         {
             Console.Clear();
-            UI.Instance.Battle();
+            ui.Battle();
 
             Console.WriteLine("Battle!!");
 
@@ -281,7 +279,7 @@ namespace TimeEater
                 if (!randomMonsterList[i].isDead)
                 {
                     Console.Clear();
-                    UI.Instance.Battle();
+                    ui.Battle();
 
                     Console.WriteLine($"Lv.{randomMonsterList[i].name} 의 공격!");
                     originHealth = player.nowHp;
@@ -328,7 +326,7 @@ namespace TimeEater
         public void Finish(Player player, int originalHealth)
         {
             Console.Clear();
-            UI.Instance.Win();
+            ui.Win();
 
             Environment.Exit(0); // 게임 종료 (프로그램 종료)
         }
@@ -336,7 +334,7 @@ namespace TimeEater
         public void Lose(Player player, int originHealth)
         {
             Console.Clear();
-            UI.Instance.Lose();
+            ui.Lose();
 
             Console.WriteLine("게임이 종료됩니다.");
             Environment.Exit(0); // 게임 종료 (프로그램 종료)
