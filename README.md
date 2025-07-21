@@ -1,5 +1,6 @@
 ## 🙌 Without Her
-![alt text](image-4.png)
+<img width="1191" height="703" alt="title" src="https://github.com/user-attachments/assets/f3e46123-8a42-4ce9-99fa-2b5141951ba0" />
+
 
 ##  목차
 1. [ 프로젝트 개요 ](#-easymemd가-뭐예요)
@@ -18,20 +19,24 @@
 
 
 ## 🙋‍♀️ 게임 시연 영상 
+![play](https://github.com/user-attachments/assets/0bef8f63-c833-4824-a63a-b874ac320d38)
 
 
 
 ## 🛠 핵심 기능 - 싱글톤 클래스   
-![alt text](image-1.png)
+<img width="1110" height="622" alt="singleton" src="https://github.com/user-attachments/assets/48dea3c5-42c9-479c-a880-4a3df6462e34" />
 
    
 ## 🛠 핵심 기능 - 리소스 관리 클래스 
-![alt text](image-2.png)
+<img width="1107" height="618" alt="management class" src="https://github.com/user-attachments/assets/3c729962-9515-482c-a52e-c6b782eb4519" />
+
 
 ## 🛠 트러블 슈팅
-![alt text](image-5.png)
-![alt text](image-6.png)
-![alt text](image-7.png)
+<img width="1110" height="621" alt="trouble shooting1-1" src="https://github.com/user-attachments/assets/11abc978-c0b5-4682-8327-d26bbd750bea" />
+<img width="1111" height="622" alt="trouble shooting1-2" src="https://github.com/user-attachments/assets/aebdd0ea-c7ea-425b-8c02-846597bf8269" />
+<img width="1112" height="618" alt="trouble shooting2" src="https://github.com/user-attachments/assets/2691e187-8dd4-49e3-bb54-270100ec16f4" />
+
 
 ## 🛠 프로젝트 회고
-![alt text](image-8.png)
+<img width="1111" height="622" alt="project " src="https://github.com/user-attachments/assets/ce243454-8fe1-4653-8947-ee4c8082a952" />
+
