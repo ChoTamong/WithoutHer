@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace TimeEater
+namespace WithoutHer
 {
     // 반복 메소드 집합:
     public class Utility

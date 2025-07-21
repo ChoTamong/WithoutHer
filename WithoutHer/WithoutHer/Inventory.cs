@@ -1,6 +1,6 @@
 ﻿using System.Reflection.Metadata;
 
-namespace TimeEater
+namespace WithoutHer
 {
     public class Inventory
     {

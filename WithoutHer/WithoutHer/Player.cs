@@ -1,4 +1,4 @@
-﻿namespace TimeEater
+﻿namespace WithoutHer
 {
     public class Player
     {

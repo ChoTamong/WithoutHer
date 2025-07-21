@@ -1,4 +1,4 @@
-﻿namespace TimeEater
+﻿namespace WithoutHer
 {
     // 기본 씬 클래스:
     public class MainMenu

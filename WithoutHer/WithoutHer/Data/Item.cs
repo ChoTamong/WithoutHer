@@ -1,4 +1,4 @@
-﻿namespace TimeEater
+﻿namespace WithoutHer
 {
     //테이터 클래스:
     public class Item

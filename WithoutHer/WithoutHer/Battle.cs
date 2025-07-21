@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 using System.Threading;
 
-namespace TimeEater
+namespace WithoutHer
 {
     public enum MonsterDisplayMode
     {

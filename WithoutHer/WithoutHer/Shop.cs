@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.Contracts;
 using System.Linq;
 
-namespace TimeEater
+namespace WithoutHer
 {
     public class Shop
     {

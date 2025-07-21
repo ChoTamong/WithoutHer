@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
 
-namespace TimeEater
+namespace WithoutHer
 {
     internal class MainScene
     {
