@@ -20,57 +20,63 @@
 &nbsp;
 
 ## 게임 시연 영상 
-![play](https://github.com/user-attachments/assets/0bef8f63-c833-4824-a63a-b874ac320d38)
+![1](https://github.com/user-attachments/assets/bb6ad21f-7842-47ad-95c1-b70a5fa0d9bf)
+![2](https://github.com/user-attachments/assets/4fd1e0f1-cac7-4819-80ff-e0a817aa14db)
+![3](https://github.com/user-attachments/assets/8a9303da-dd0d-4cb3-b7ba-9313c8ea1f09)
+![4](https://github.com/user-attachments/assets/512410c0-1337-4f43-a539-f3486017f8de)
+![5](https://github.com/user-attachments/assets/a47e7065-339e-4be6-a078-c08237422bda)
 &nbsp;
 
 ## 구현 기능 
-- (게임 시작 화면)
+- (게임 시작 화면)&nbsp;
 간단한 소개와 할 수 있는 행동을 알려줍니다. 
 <img width="1191" height="703" alt="title" src="https://github.com/user-attachments/assets/f3e46123-8a42-4ce9-99fa-2b5141951ba0" />
 &nbsp;
 
-- (상태 보기)
+- (상태 보기)&nbsp;
 캐릭터의 정보를 표시합니다. 
 <img width="852" height="450" alt="status" src="https://github.com/user-attachments/assets/1cf1bb56-1b2d-4619-9b7b-07bd12c5714d" />
 &nbsp;
 
-- (전투 시작)
+- (전투 시작)&nbsp;
 전투가 시작되면 1~4마리 교도관이 랜덤으로 등장합니다. (예시에서는 3명이 등장했습니다)
 <img width="1207" height="663" alt="battle" src="https://github.com/user-attachments/assets/48ef8e28-8a68-4c3c-9314-2e75405da45a" />
 &nbsp;
 
-- (플레이어 공격)
+- (플레이어 공격)&nbsp;
 플레이어가 공격을 선택하면 교도관 앞에 숫자가 표시되고, 공격할 수 있습니다.
 <img width="1205" height="703" alt="player attack" src="https://github.com/user-attachments/assets/94fd7e4b-8e2c-4fe3-abb3-4548230ee0f1" />
 &nbsp;
 
 이미 죽은 교도관을 선택하거나, 없는 숫자를 입력하면 "잘못된 입력입니다"를 출력합니다. 
-
+<img width="1207" height="672" alt="input error" src="https://github.com/user-attachments/assets/72a58d6f-20f4-4a96-973d-cdfd3b78f100" />
 &nbsp;
 
 공격력은 다음과 같이 오차를 가집니다. 
 (기본 공격력 - 기본 공격력의 10%) ~ (기본 공격력 + 기본 공격력의 10%)
+<img width="852" height="450" alt="status" src="https://github.com/user-attachments/assets/1cf1bb56-1b2d-4619-9b7b-07bd12c5714d" />
+<img width="1206" height="677" alt="attackVariance" src="https://github.com/user-attachments/assets/ea30fe00-1804-4f5d-8bd2-c605b0802179" />
 &nbsp;
+
 죽은 몬스터는 Dead로 표시하고, 텍스트는 어두운 색으로 표시합니다.
+<img width="1211" height="740" alt="enemy dead" src="https://github.com/user-attachments/assets/d86d0ae8-b3fd-4da3-9cab-57928024ab76" />
 &nbsp;
 
-
-
-&nbsp;
-
-- (적 공격) 
+- (적 공격)&nbsp;
 플레이어의 공격이 끝나면, 교도관이 공격합니다.
 <img width="1203" height="727" alt="enemy attack" src="https://github.com/user-attachments/assets/c24bedee-c4e4-42c9-85c9-8cebdb5bc2c2" />
 &nbsp;
 
 다음을 입력하면 다음 교도관이 차례대로 공격합니다.
-
+<img width="1205" height="708" alt="enemy turn1" src="https://github.com/user-attachments/assets/bfbb4420-d347-4c01-9dfa-c6d42e23e147" />
+<img width="1206" height="721" alt="enemy turn2" src="https://github.com/user-attachments/assets/d03149ae-24d8-4e82-87c3-b1a182550f60" />
 &nbsp;
+
 몬스터 차례가 끝나면, 플레이어의 턴으로 돌아옵니다. 
-
+<img width="1208" height="788" alt="player turn" src="https://github.com/user-attachments/assets/2fd00e1e-5ec3-44e2-b93f-f430e03e9fe4" />
 &nbsp;
 
-- (전투 결과)
+- (전투 결과)&nbsp;
 모든 교도관이 Dead 상태가 되면 승리, 플레이어가 Dead 상태가 되면 패배하게 됩니다. 
 <img width="1130" height="702" alt="win" src="https://github.com/user-attachments/assets/42d17575-a0a2-42b4-a2cb-28a68a76141a" />
 <img width="880" height="693" alt="lose" src="https://github.com/user-attachments/assets/ebce9475-35ab-4387-a7bd-90552732619e" />
