@@ -18,6 +18,8 @@
 
         private Job jobObject; // 새로 추가된 필드
 
+        public UI ui = UI.Instance;
+
         public Player(string name, int job)
         {
             SetName(name);
@@ -81,7 +83,7 @@
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("[상태확인]");
-            UI.Instance.Statusline();
+            ui.Statusline();
             Console.WriteLine("=== PLAYER STATUS ===");
             Console.WriteLine($"이름     : {name}");
             Console.WriteLine($"체격     : {job}");

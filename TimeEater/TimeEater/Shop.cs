@@ -13,6 +13,8 @@ namespace TimeEater
 
         public UI ui;
 
+        public Player player;
+
         public void FirstItemShop()
         {
             InitShop();
@@ -46,6 +48,7 @@ namespace TimeEater
         public void InitShop()
         {
             dataManager = DataManager.Instance;
+            player = dataManager.player;
             recoveryItem = dataManager.recoveryItem;
             boughtRecoverItemToInventory = dataManager.boughtRecoverItemToInventory;
             shopItems = dataManager.shopItems;
@@ -61,7 +64,7 @@ namespace TimeEater
             ui.shopScene(); // 상인 이미지;
             Console.WriteLine("[회복 아이템]\n");
             Console.WriteLine("[보유골드]");
-            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
+            Console.WriteLine($"{player.gold}G\n");
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in recoveryItem)
             {
@@ -90,7 +93,7 @@ namespace TimeEater
             ui.shopScene(); // 상인 이미지;
             Console.WriteLine("[회복 아이템 구매]\n");
             Console.WriteLine("[보유골드]");
-            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
+            Console.WriteLine($"{player.gold}G\n");
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in recoveryItem)
             {
@@ -112,10 +115,10 @@ namespace TimeEater
                     }
                     else 
                     {
-                        if (DataManager.Instance.player.gold >= boughtItem.price)
+                        if (player.gold >= boughtItem.price)
                         {
                             Console.WriteLine("아주 좋은 선택이야... ㅎㅎㅎ");
-                            DataManager.Instance.player.gold -= boughtItem.price;
+                            player.gold -= boughtItem.price;
                             boughtRecoverItemToInventory.Add(boughtItem);
                         }
                         else
@@ -142,7 +145,7 @@ namespace TimeEater
             ui.shopScene(); // 상인 이미지;
             Console.WriteLine("[장착아이템]\n");
             Console.WriteLine("[보유골드]");
-            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
+            Console.WriteLine($"{player.gold}G\n");
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in shopItems)
             {
@@ -172,7 +175,7 @@ namespace TimeEater
             ui.shopScene(); // 상인 이미지;
             Console.WriteLine("[아이템 구매]\n");
             Console.WriteLine("[보유골드]");
-            Console.WriteLine($"{DataManager.Instance.player.gold}G\n");
+            Console.WriteLine($"{player.gold}G\n");
             Console.WriteLine("[아이템 목록]\n");
             foreach (var displayItem in shopItems)
             {
@@ -198,10 +201,10 @@ namespace TimeEater
                     else 
                     {
                         
-                        if (DataManager.Instance.player.gold >= boughtItem.price)
+                        if (player.gold >= boughtItem.price)
                         {
                             Console.WriteLine("아주 좋은 선택이야... ㅎㅎㅎ");
-                            DataManager.Instance.player.gold -= boughtItem.price;
+                            player.gold -= boughtItem.price;
                             boughtItemToInventory.Add(boughtItem);
                         }
                         else
