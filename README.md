@@ -24,22 +24,22 @@
 &nbsp;
 
 ## 구현 기능 
-- 게임 시작 화면 
+- (게임 시작 화면)
 간단한 소개와 할 수 있는 행동을 알려줍니다. 
 <img width="1191" height="703" alt="title" src="https://github.com/user-attachments/assets/f3e46123-8a42-4ce9-99fa-2b5141951ba0" />
 &nbsp;
 
-- 상태 보기
+- (상태 보기)
 캐릭터의 정보를 표시합니다. 
 <img width="852" height="450" alt="status" src="https://github.com/user-attachments/assets/1cf1bb56-1b2d-4619-9b7b-07bd12c5714d" />
 &nbsp;
 
-- 전투 시작
+- (전투 시작)
 전투가 시작되면 1~4마리 교도관이 랜덤으로 등장합니다. (예시에서는 3명이 등장했습니다)
 <img width="1207" height="663" alt="battle" src="https://github.com/user-attachments/assets/48ef8e28-8a68-4c3c-9314-2e75405da45a" />
 &nbsp;
 
-- 플레이어 공격
+- (플레이어 공격)
 플레이어가 공격을 선택하면 교도관 앞에 숫자가 표시되고, 공격할 수 있습니다.
 <img width="1205" height="703" alt="player attack" src="https://github.com/user-attachments/assets/94fd7e4b-8e2c-4fe3-abb3-4548230ee0f1" />
 &nbsp;
@@ -58,7 +58,7 @@
 
 &nbsp;
 
-- 적 공격 
+- (적 공격) 
 플레이어의 공격이 끝나면, 교도관이 공격합니다.
 <img width="1203" height="727" alt="enemy attack" src="https://github.com/user-attachments/assets/c24bedee-c4e4-42c9-85c9-8cebdb5bc2c2" />
 &nbsp;
@@ -70,7 +70,7 @@
 
 &nbsp;
 
-- 전투 결과 
+- (전투 결과)
 모든 교도관이 Dead 상태가 되면 승리, 플레이어가 Dead 상태가 되면 패배하게 됩니다. 
 <img width="1130" height="702" alt="win" src="https://github.com/user-attachments/assets/42d17575-a0a2-42b4-a2cb-28a68a76141a" />
 <img width="880" height="693" alt="lose" src="https://github.com/user-attachments/assets/ebce9475-35ab-4387-a7bd-90552732619e" />
