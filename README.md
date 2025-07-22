@@ -33,11 +33,16 @@
 <br>
 
 ## 게임 설명
-|![image](https://github.com/user-attachments/assets/f3e46123-8a42-4ce9-99fa-2b5141951ba0)|![image](https://github.com/user-attachments/assets/48ef8e28-8a68-4c3c-9314-2e75405da45a)|
-|:---:|:---:|
-|시작 화면|전투 화면|
+|![image](https://github.com/user-attachments/assets/f3e46123-8a42-4ce9-99fa-2b5141951ba0)|
+|:---:|
+|시작 화면|
 
-<b>'Without Her'</b>는 텍스트 기반의 RPG 장르입니다. 보시는 바와 같이, 플레이어의 선택에 따라 스토리가 진행되고, 다른 결말을 만들어냅니다.
+|![image](https://github.com/user-attachments/assets/42d17575-a0a2-42b4-a2cb-28a68a76141a)|![image](https://github.com/user-attachments/assets/ebce9475-35ab-4387-a7bd-90552732619e)|
+|:---:|:---:|
+|승리 화면|패배 화면|
+
+
+<b>'Without Her'</b>는 텍스트 기반의 RPG 장르입니다. 플레이어의 선택에 따라 스토리가 진행되고, 다른 결말을 만들어냅니다.
 
 저희 게임의 핵심적인 특징은 모든 엔딩이 결국 비극으로 귀결된다는 점입니다. 탈출에 성공하면 아내의 임종을 지킬 수 있고, 실패하면 차가운 유골함을 마주하게 됩니다. 어떤 선택을 하더라도 완전한 해피엔딩은 없으며, 이를 통해 '최선'이 아닌 '차악'을 선택해야 하는 딜레마를 경험하게 됩니다.
 
