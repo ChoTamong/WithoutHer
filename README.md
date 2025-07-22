@@ -13,7 +13,8 @@
   - [게임 설명](#게임-설명)
   - [게임 플레이 방식](#게임-플레이-방식)
   - [게임 시연](#게임-시연)
-  - [구현 기능](#구현-기능)
+  - [구현 기능 (필수 기능)](#구현-기능-(필수-기능))
+  - [구현 기능 (도전 기능)](#구현-기능-(도전-기능))
   - [핵심 기능](#핵심-기능)
   - [트러블 슈팅](#트러블-슈팅)
   - [프로젝트 회고](#프로젝트-회고)
@@ -63,7 +64,7 @@
 
 <br>
 
-## 구현 기능
+## 구현 기능 (필수 기능)
 (게임 시작 화면)
 <p>간단한 소개와 할 수 있는 행동을 알려줍니다.</p>
 <img width="1191" height="703" alt="title" src="https://github.com/user-attachments/assets/f3e46123-8a42-4ce9-99fa-2b5141951ba0" />
@@ -119,6 +120,27 @@
 <img width="880" height="693" alt="lose" src="https://github.com/user-attachments/assets/ebce9475-35ab-4387-a7bd-90552732619e" />
 &nbsp;
 
+## 구현 기능 (도전 기능)
+(캐릭터 생성)
+<p>이름과 나의 모습을 선택하면 캐릭터가 생성됩니다.</p>
+<img width="1208" height="570" alt="name" src="https://github.com/user-attachments/assets/02d034d4-621e-455f-b3ac-5e0a3f97d047" />
+<img width="1203" height="675" alt="job" src="https://github.com/user-attachments/assets/8fa384b3-e464-45ce-8d57-58de77dc5448" />
+&nbsp;
+
+(몬스터 종류 추가)
+<p>몬스터 : 신입교도관, 선임교도관, 교도부사관, 교도관리소장</p>
+<img width="1207" height="663" alt="battle" src="https://github.com/user-attachments/assets/48ef8e28-8a68-4c3c-9314-2e75405da45a" />
+&nbsp;
+
+(아이템 적용)
+<p>아이템을 장착, 장착해제할 수 있습니다.</p>
+<img width="1205" height="420" alt="equip item" src="https://github.com/user-attachments/assets/dfa13e4e-dad2-4889-9679-88a9beb0f169" />
+&nbsp;
+
+(회복 아이템)
+<p>담배, 각성제로 체력과 마나를 회복할 수 있습니다.</p>
+<img width="1207" height="826" alt="store" src="https://github.com/user-attachments/assets/56e8a43d-b62e-40a5-a91d-e447764af37a" />
+&nbsp;
 
 ## 핵심 기능
 <img width="1110" height="622" alt="singleton" src="https://github.com/user-attachments/assets/48dea3c5-42c9-479c-a880-4a3df6462e34" />
